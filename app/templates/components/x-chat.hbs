@@ -1,0 +1,11 @@
+chat
+
+{{#each message in messages}}
+  <div>
+    message: <span>{{message.body}}</span>
+  </div>
+{{/each}}
+
+
+{{input value=messageBody class="form-control" placeholder='enter message' type='text'}}
+<button {{action 'sendMessage'}}>send</button>
