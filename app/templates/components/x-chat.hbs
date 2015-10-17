@@ -1,6 +1,15 @@
 chat
 
-{{#each message in messages}}
+{{#if session.isAuthenticated}}
+  Logged in as {{session.currentUser.displayName}}
+  <button {{action "signOut"}}>Sign out</button>
+  {{outlet}}
+{{else}}
+  <button {{action "signIn" "facebook"}}>Sign in with Facebook</button>
+{{/if}}
+
+
+{{#each messages as |message|}}
   <div>
     message: <span>{{message.body}}</span>
   </div>

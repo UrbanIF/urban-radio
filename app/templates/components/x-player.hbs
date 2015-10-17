@@ -1,0 +1,27 @@
+<header class='x-payer__header'>
+  <div class='x-payer__header-wrap'>
+    <div class='x-payer__logo'></div>
+    <div class='x-payer__now-title'>Ви слухаєте</div>
+    <div class='x-payer__now-song'>Onuka – When I met you</div>
+  </div>
+</header>
+<div class='x-payer__central'>
+
+  <button class='x-payer__play-btn' {{action 'playPause'}}></button>
+
+  <button class='x-payer__sound-btn' {{action 'muteUnmute'}}></button>
+
+  {{x-sound-slider value=soundLevel }}
+
+  <div class='x-payer__timer'>02 : 42   -   00 : 32</div>
+
+</div>
+<footer class='x-payer__footer'>
+    <span class='x-payer__next-title'>Далі в ефірі</span>{{!--
+--}}<span class='x-payer__next-song'>Океан Ельзи — Життя починається знов</span>
+</footer>
+
+<video class='audio-el' controls="" autoplay="" name="media">
+  {{!-- <source src="http://http-live.sr.se/p3-mp3-192" type="audio/mpeg"> --}}
+  <source src="https://cf-media.sndcdn.com/YIj9NkR5qQgi.128.mp3?Policy=eyJTdGF0ZW1lbnQiOlt7IlJlc291cmNlIjoiKjovL2NmLW1lZGlhLnNuZGNkbi5jb20vWUlqOU5rUjVxUWdpLjEyOC5tcDMiLCJDb25kaXRpb24iOnsiRGF0ZUxlc3NUaGFuIjp7IkFXUzpFcG9jaFRpbWUiOjE0NDUwODg1MDh9fX1dfQ__&Signature=GTMrLKavkRpL5LyEuB5f2TkWsUn2bxCf90qKUMN1g4BiiRzPwPz7D9jCiqijvB764ZnXjFrNbNR6DFEN3mOsoOj1D3OBakwG48LUWk5wqiJ~ggqiyJLKg1p7uKyJmjiFPGOXHqQWAx0fn9zRTnd7votRaZ6ZkBxwxOv5S3FJAcN-kKRwSanb5YYSzL9pP0vjIyKmfD-r7jjeCajTpQ0lVHvaIJb0rkzq5IBd7IdWPVMAI0g~ZdmRGKu1vxgzrZAfBq1CdOO3GjL1u~xt5naJzv-7YYnvLQIEiYfV93rlceCmEbWKcYG81bp0nEyDSpcJodR9rv~X2oq1EKPzsYHWog__&Key-Pair-Id=APKAJAGZ7VMH2PFPW6UQ" type="audio/mpeg">
+</video>

@@ -4,7 +4,14 @@ module.exports = function(environment) {
   var ENV = {
     modulePrefix: 'urban-radio',
     environment: environment,
-    contentSecurityPolicy: { 'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com" },
+    contentSecurityPolicy: {
+      'connect-src': "'self' https://auth.firebase.com wss://*.firebaseio.com",
+      'font-src': "'self' data: fonts.gstatic.com ",
+      'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
+      'frame-src': "'self' https://www.youtube.com",
+      'script-src': "'self' https://www.youtube.com https://s.ytimg.com",
+      'media-src': "'self' https://cf-media.sndcdn.com"
+    },
     firebase: 'https://urban-radio.firebaseio.com/',
     baseURL: '/',
     locationType: 'auto',
