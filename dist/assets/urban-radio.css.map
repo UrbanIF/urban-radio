@@ -2,10 +2,10 @@
 	"version": 3,
 	"file": "urban-radio.css",
 	"sources": [
-		"../../sass_compiler-input_base_path-lCNzLImO.tmp/0/app/styles/app.scss",
-		"../../sass_compiler-input_base_path-lCNzLImO.tmp/0/app/styles/components/_x-player.scss",
-		"../../sass_compiler-input_base_path-lCNzLImO.tmp/0/app/styles/components/_announcments.scss",
-		"../../sass_compiler-input_base_path-lCNzLImO.tmp/0/app/styles/components/_main.scss"
+		"../../sass_compiler-input_base_path-MIzgBMCy.tmp/0/app/styles/app.scss",
+		"../../sass_compiler-input_base_path-MIzgBMCy.tmp/0/app/styles/components/_x-player.scss",
+		"../../sass_compiler-input_base_path-MIzgBMCy.tmp/0/app/styles/components/_announcments.scss",
+		"../../sass_compiler-input_base_path-MIzgBMCy.tmp/0/app/styles/components/_main.scss"
 	],
 	"sourcesContent": [
 		"body {\n  font-family: \"Open Sans\", sans-serif;\n  font-size: 14px;\n  letter-spacing: normal;\n  line-height: 1.5em;\n}\n\nbutton {\n  border: none;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content:\"\";\n  display:table;\n}\n.clearfix:after {\n  clear:both;\n}\n.clearfix {\n  zoom:1; /* For IE 6/7 (trigger hasLayout) */\n}\n\n.container {\n  max-width: 960px;\n  margin: 0 auto;\n}\n\n\n@import 'components/x-player';\n@import 'components/announcments';\n@import 'components/main';\n",
