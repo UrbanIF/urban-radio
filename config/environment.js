@@ -13,8 +13,8 @@ module.exports = function(environment) {
       'media-src': "'self' https://cf-media.sndcdn.com"
     },
     firebase: 'https://urban-radio.firebaseio.com/',
-    baseURL: '/',
-    locationType: 'auto',
+    baseURL: false,
+    locationType: 'hash',
     EmberENV: {
       FEATURES: {
         // Here you can enable experimental features on an ember canary build
