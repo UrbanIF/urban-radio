@@ -40,7 +40,7 @@ button {
   font-size: 22px; }
 
 .x-payer__logo {
-  background: url("/assets/x-player-logo.png") no-repeat;
+  background: url("x-player-logo.png") no-repeat;
   width: 100px;
   height: 38px;
   float: right; }
@@ -49,23 +49,23 @@ button {
   background: gray;
   position: relative;
   height: 111px;
-  background: url("/assets/onuka.jpg") no-repeat center center; }
+  background: url("onuka.jpg") no-repeat center center; }
 
 .x-payer__play-btn {
   border-radius: 50%;
   width: 72px;
   height: 72px;
-  background: #cbfffc url("/assets/play-green.png") no-repeat center center;
+  background: #cbfffc url("play-green.png") no-repeat center center;
   position: absolute;
   top: 50%;
   left: 33px;
   transform: translateY(-50%); }
 
 .is-playing .x-payer__play-btn {
-  background: #cbfffc url("/assets/stop-icon.png") no-repeat center center; }
+  background: #cbfffc url("stop-icon.png") no-repeat center center; }
 
 .x-payer__sound-btn {
-  background: url("/assets/sound-icon.png") no-repeat;
+  background: url("sound-icon.png") no-repeat;
   width: 24px;
   height: 22px;
   position: absolute;
@@ -74,7 +74,7 @@ button {
   transform: translateY(-50%); }
 
 .is-muted .x-payer__sound-btn {
-  background: url("/assets/sound-muted-icon.png") no-repeat; }
+  background: url("sound-muted-icon.png") no-repeat; }
 
 .x-payer__sound-bar {
   width: 178px;
@@ -158,29 +158,63 @@ button {
   height: 280px;
   position: relative;
   overflow: hidden;
-  background: gray;
-  background-size: cover; }
+  cursor: pointer; }
+
+.announcment-bg {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  z-index: 1;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center center;
+  -webkit-transition: -webkit-transform 0.5s ease-in;
+  -moz-transition: -moz-transform 0.5s ease-in;
+  -o-transition: -o-transform 0.5s ease-in;
+  transition: transform 0.5s ease-in; }
+
+.announcment-inner:hover .announcment-bg {
+  -webkit-transition: -webkit-transform 3s ease-in;
+  -moz-transition: -moz-transform 3s ease-in;
+  -o-transition: -o-transform 3s ease-in;
+  transition: transform 3s ease-in;
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
+  transform: scale(1.1); }
 
 .ann__subtitle {
   font-size: 18px;
   font-style: italic;
-  margin: 60px 0 50px; }
+  margin: 60px 0 50px;
+  z-index: 3;
+  position: relative; }
 
 .ann__title {
   font-size: 30px;
   line-height: 36px;
   height: 120px;
   padding: 0 50px;
-  margin: 0; }
+  margin: 0;
+  z-index: 3;
+  position: relative; }
 
 .ann__time {
-  font-size: 18px; }
+  font-size: 18px;
+  z-index: 3;
+  position: relative; }
 
 .main-block__header {
   overflow: hidden;
   height: 227px;
   background-size: cover;
-  background-image: url("/assets/main-bg.jpg");
+  background-image: url("main-bg.jpg");
   position: relative; }
 
 #header-video {
@@ -205,7 +239,7 @@ button {
   color: #fff;
   padding: 31px 0 0 0;
   margin: 20px 0 0 20px;
-  background: url("/assets/headphones.png") top left no-repeat;
+  background: url("headphones.png") top left no-repeat;
   position: relative;
   z-index: 10; }
 
@@ -216,7 +250,7 @@ button {
 .main-logo {
   width: 246px;
   height: 93px;
-  background: url("/assets/main-logo.png") center top no-repeat;
+  background: url("main-logo.png") center top no-repeat;
   position: absolute;
   z-index: 9;
   margin: auto;
@@ -241,7 +275,7 @@ button {
   height: 72px;
   border-radius: 50%;
   box-shadow: -1px 1px 3px 0px rgba(0, 0, 0, 0.47);
-  background: #ff6054 url("/assets/play-white.png") no-repeat center center;
+  background: #ff6054 url("play-white.png") no-repeat center center;
   padding: 0; }
 
 .main-radio__now-title {
@@ -289,11 +323,11 @@ button {
 
 .main-video-control-prev {
   left: 0;
-  background: #1fe8dc url("/assets/arrow-left.png") 45% center no-repeat; }
+  background: #1fe8dc url("arrow-left.png") 45% center no-repeat; }
 
 .main-video-control-next {
   right: 0;
-  background: #1fe8dc url("/assets/arrow-right.png") 55% center no-repeat; }
+  background: #1fe8dc url("arrow-right.png") 55% center no-repeat; }
 
 .main-video-control-icon {
   position: absolute;
@@ -305,6 +339,6 @@ button {
   width: 47px;
   height: 47px;
   border-radius: 50%;
-  background: #e2e2e2 url("/assets/video-icon.png") center 45% no-repeat; }
+  background: #e2e2e2 url("video-icon.png") center 45% no-repeat; }
 
 /*# sourceMappingURL=urban-radio.css.map */

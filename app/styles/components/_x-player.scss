@@ -16,7 +16,7 @@
       font-size: 22px;
     }
     .x-payer__logo {
-      background: url('/assets/x-player-logo.png') no-repeat;
+      background: url('x-player-logo.png') no-repeat;
       width: 100px;
       height: 38px;
       float: right;
@@ -28,7 +28,7 @@
   position: relative;
   height: 111px;
 
-  background: url('/assets/onuka.jpg') no-repeat center center;
+  background: url('onuka.jpg') no-repeat center center;
 
 }
 
@@ -37,7 +37,7 @@
     border-radius: 50%;
     width: 72px;
     height: 72px;
-    background: #cbfffc url('/assets/play-green.png') no-repeat center center;
+    background: #cbfffc url('play-green.png') no-repeat center center;
 
     position: absolute;
     top: 50%;
@@ -45,11 +45,11 @@
     transform: translateY(-50%);
   }
   .is-playing .x-payer__play-btn {
-    background: #cbfffc url('/assets/stop-icon.png') no-repeat center center;
+    background: #cbfffc url('stop-icon.png') no-repeat center center;
   }
 
   .x-payer__sound-btn {
-    background: url('/assets/sound-icon.png') no-repeat;
+    background: url('sound-icon.png') no-repeat;
     width: 24px;
     height: 22px;
 
@@ -60,7 +60,7 @@
   }
 
   .is-muted .x-payer__sound-btn {
-    background: url('/assets/sound-muted-icon.png') no-repeat;
+    background: url('sound-muted-icon.png') no-repeat;
   }
 
   .x-payer__sound-bar {

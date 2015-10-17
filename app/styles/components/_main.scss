@@ -6,7 +6,7 @@
   overflow: hidden;
   height: 227px;
   background-size: cover;
-  background-image: url('/assets/main-bg.jpg');
+  background-image: url('main-bg.jpg');
   position: relative;
 }
 
@@ -34,7 +34,7 @@
   color: #fff;
   padding: 31px 0 0 0;
   margin: 20px 0 0 20px;
-  background: url('/assets/headphones.png') top left no-repeat;
+  background: url('headphones.png') top left no-repeat;
   position: relative;
   z-index: 10;
 }
@@ -45,7 +45,7 @@
 .main-logo {
   width: 246px;
   height: 93px;
-  background: url('/assets/main-logo.png') center top no-repeat;
+  background: url('main-logo.png') center top no-repeat;
   position: absolute;
   z-index: 9;
   margin: auto;
@@ -74,7 +74,7 @@
     height: 72px;
     border-radius: 50%;
     box-shadow: -1px 1px 3px 0px rgba(0, 0, 0, 0.47);
-    background: #ff6054 url('/assets/play-white.png') no-repeat center center;
+    background: #ff6054 url('play-white.png') no-repeat center center;
     padding: 0;
   }
 
@@ -127,11 +127,11 @@
     }
     .main-video-control-prev {
       left: 0;
-      background: #1fe8dc url('/assets/arrow-left.png') 45% center no-repeat;
+      background: #1fe8dc url('arrow-left.png') 45% center no-repeat;
     }
     .main-video-control-next {
       right: 0;
-      background: #1fe8dc url('/assets/arrow-right.png') 55% center no-repeat;
+      background: #1fe8dc url('arrow-right.png') 55% center no-repeat;
     }
     .main-video-control-icon {
       position: absolute;
@@ -143,5 +143,5 @@
       width: 47px;
       height: 47px;
       border-radius: 50%;
-      background: #e2e2e2 url('/assets/video-icon.png') center 45% no-repeat;
+      background: #e2e2e2 url('video-icon.png') center 45% no-repeat;
     }

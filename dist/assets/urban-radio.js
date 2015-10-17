@@ -90,7 +90,7 @@ define('urban-radio/components/main-block', ['exports', 'ember'], function (expo
 
     actions: {
       openPlayer: function openPlayer() {
-        window.open('/player', 'UrbanRadio', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=550,height=243');
+        window.open('#/player', 'UrbanRadio', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=550,height=243');
       },
       nextVideo: function nextVideo() {
         this.set('videoIndex', (this.get('videoIndex') + 1) % this.get('videoIds').length);
@@ -977,7 +977,7 @@ define('urban-radio/templates/components/x-player', ['exports'], function (expor
         var el2 = dom.createTextNode("  ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("source");
-        dom.setAttribute(el2,"src","/assets/onuka.mp3");
+        dom.setAttribute(el2,"src","assets/onuka.mp3");
         dom.setAttribute(el2,"type","audio/mpeg");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
@@ -1111,7 +1111,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 41,
+            "line": 44,
             "column": 0
           }
         },
@@ -1140,7 +1140,12 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4,"class","announcment-inner");
-        dom.setAttribute(el4,"style","background-image: url('/assets/announce-bg.jpg');");
+        var el5 = dom.createTextNode("\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"class","announcment-bg");
+        dom.setAttribute(el5,"style","background-image: url('assets/announce-bg.jpg');");
+        dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("h4");
@@ -1176,7 +1181,12 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4,"class","announcment-inner");
-        dom.setAttribute(el4,"style","background-image: url('/assets/announce-bg.jpg');");
+        var el5 = dom.createTextNode("\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"class","announcment-bg");
+        dom.setAttribute(el5,"style","background-image: url('assets/announce-bg.jpg');");
+        dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("h4");
@@ -1212,7 +1222,12 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.appendChild(el3, el4);
         var el4 = dom.createElement("div");
         dom.setAttribute(el4,"class","announcment-inner");
-        dom.setAttribute(el4,"style","background-image: url('/assets/announce-bg.jpg');");
+        var el5 = dom.createTextNode("\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"class","announcment-bg");
+        dom.setAttribute(el5,"style","background-image: url('assets/announce-bg.jpg');");
+        dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("h4");
@@ -1272,8 +1287,8 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
       },
       statements: [
         ["content","main-block",["loc",[null,[1,0],[1,14]]]],
-        ["content","x-chat",["loc",[null,[35,0],[35,10]]]],
-        ["content","outlet",["loc",[null,[40,0],[40,10]]]]
+        ["content","x-chat",["loc",[null,[38,0],[38,10]]]],
+        ["content","outlet",["loc",[null,[43,0],[43,10]]]]
       ],
       locals: [],
       templates: []
@@ -1385,63 +1400,6 @@ define('urban-radio/tests/components/x-sound-slider.jshint', function () {
   QUnit.module('JSHint - components');
   QUnit.test('components/x-sound-slider.js should pass jshint', function(assert) { 
     assert.ok(true, 'components/x-sound-slider.js should pass jshint.'); 
-  });
-
-});
-define('urban-radio/tests/helpers/resolver', ['exports', 'ember/resolver', 'urban-radio/config/environment'], function (exports, Resolver, config) {
-
-  'use strict';
-
-  var resolver = Resolver['default'].create();
-
-  resolver.namespace = {
-    modulePrefix: config['default'].modulePrefix,
-    podModulePrefix: config['default'].podModulePrefix
-  };
-
-  exports['default'] = resolver;
-
-});
-define('urban-radio/tests/helpers/resolver.jshint', function () {
-
-  'use strict';
-
-  QUnit.module('JSHint - helpers');
-  QUnit.test('helpers/resolver.js should pass jshint', function(assert) { 
-    assert.ok(true, 'helpers/resolver.js should pass jshint.'); 
-  });
-
-});
-define('urban-radio/tests/helpers/start-app', ['exports', 'ember', 'urban-radio/app', 'urban-radio/config/environment'], function (exports, Ember, Application, config) {
-
-  'use strict';
-
-
-
-  exports['default'] = startApp;
-  function startApp(attrs) {
-    var application;
-
-    var attributes = Ember['default'].merge({}, config['default'].APP);
-    attributes = Ember['default'].merge(attributes, attrs); // use defaults, but you can override;
-
-    Ember['default'].run(function () {
-      application = Application['default'].create(attributes);
-      application.setupForTesting();
-      application.injectTestHelpers();
-    });
-
-    return application;
-  }
-
-});
-define('urban-radio/tests/helpers/start-app.jshint', function () {
-
-  'use strict';
-
-  QUnit.module('JSHint - helpers');
-  QUnit.test('helpers/start-app.js should pass jshint', function(assert) { 
-    assert.ok(true, 'helpers/start-app.js should pass jshint.'); 
   });
 
 });
@@ -1595,149 +1553,6 @@ define('urban-radio/tests/integration/components/main-block-test.jshint', functi
   QUnit.module('JSHint - integration/components');
   QUnit.test('integration/components/main-block-test.js should pass jshint', function(assert) { 
     assert.ok(true, 'integration/components/main-block-test.js should pass jshint.'); 
-  });
-
-});
-define('urban-radio/tests/integration/components/x-chat-test', ['ember-qunit'], function (ember_qunit) {
-
-  'use strict';
-
-  ember_qunit.moduleForComponent('x-chat', 'Integration | Component | x chat', {
-    integration: true
-  });
-
-  ember_qunit.test('it renders', function (assert) {
-    assert.expect(2);
-
-    // Set any properties with this.set('myProperty', 'value');
-    // Handle any actions with this.on('myAction', function(val) { ... });
-
-    this.render(Ember.HTMLBars.template((function () {
-      return {
-        meta: {
-          'revision': 'Ember@1.13.10',
-          'loc': {
-            'source': null,
-            'start': {
-              'line': 1,
-              'column': 0
-            },
-            'end': {
-              'line': 1,
-              'column': 10
-            }
-          }
-        },
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createComment('');
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
-          dom.insertBoundary(fragment, 0);
-          dom.insertBoundary(fragment, null);
-          return morphs;
-        },
-        statements: [['content', 'x-chat', ['loc', [null, [1, 0], [1, 10]]]]],
-        locals: [],
-        templates: []
-      };
-    })()));
-
-    assert.equal(this.$().text().trim(), '');
-
-    // Template block usage:
-    this.render(Ember.HTMLBars.template((function () {
-      var child0 = (function () {
-        return {
-          meta: {
-            'revision': 'Ember@1.13.10',
-            'loc': {
-              'source': null,
-              'start': {
-                'line': 2,
-                'column': 4
-              },
-              'end': {
-                'line': 4,
-                'column': 4
-              }
-            }
-          },
-          arity: 0,
-          cachedFragment: null,
-          hasRendered: false,
-          buildFragment: function buildFragment(dom) {
-            var el0 = dom.createDocumentFragment();
-            var el1 = dom.createTextNode('      template block text\n');
-            dom.appendChild(el0, el1);
-            return el0;
-          },
-          buildRenderNodes: function buildRenderNodes() {
-            return [];
-          },
-          statements: [],
-          locals: [],
-          templates: []
-        };
-      })();
-
-      return {
-        meta: {
-          'revision': 'Ember@1.13.10',
-          'loc': {
-            'source': null,
-            'start': {
-              'line': 1,
-              'column': 0
-            },
-            'end': {
-              'line': 5,
-              'column': 2
-            }
-          }
-        },
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode('\n');
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment('');
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode('  ');
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
-          return morphs;
-        },
-        statements: [['block', 'x-chat', [], [], 0, null, ['loc', [null, [2, 4], [4, 15]]]]],
-        locals: [],
-        templates: [child0]
-      };
-    })()));
-
-    assert.equal(this.$().text().trim(), 'template block text');
-  });
-
-});
-define('urban-radio/tests/integration/components/x-chat-test.jshint', function () {
-
-  'use strict';
-
-  QUnit.module('JSHint - integration/components');
-  QUnit.test('integration/components/x-chat-test.js should pass jshint', function(assert) { 
-    assert.ok(true, 'integration/components/x-chat-test.js should pass jshint.'); 
   });
 
 });
@@ -2067,109 +1882,6 @@ define('urban-radio/tests/routes/player.jshint', function () {
   });
 
 });
-define('urban-radio/tests/test-helper', ['urban-radio/tests/helpers/resolver', 'ember-qunit'], function (resolver, ember_qunit) {
-
-	'use strict';
-
-	ember_qunit.setResolver(resolver['default']);
-
-});
-define('urban-radio/tests/test-helper.jshint', function () {
-
-  'use strict';
-
-  QUnit.module('JSHint - .');
-  QUnit.test('test-helper.js should pass jshint', function(assert) { 
-    assert.ok(true, 'test-helper.js should pass jshint.'); 
-  });
-
-});
-define('urban-radio/tests/unit/initializers/component-store-injector-test', ['ember', 'urban-radio/initializers/component-store-injector', 'qunit'], function (Ember, component_store_injector, qunit) {
-
-  'use strict';
-
-  var registry, application;
-
-  qunit.module('Unit | Initializer | component store injector', {
-    beforeEach: function beforeEach() {
-      Ember['default'].run(function () {
-        application = Ember['default'].Application.create();
-        registry = application.registry;
-        application.deferReadiness();
-      });
-    }
-  });
-
-  // Replace this with your real tests.
-  qunit.test('it works', function (assert) {
-    component_store_injector.initialize(registry, application);
-
-    // you would normally confirm the results of the initializer here
-    assert.ok(true);
-  });
-
-});
-define('urban-radio/tests/unit/initializers/component-store-injector-test.jshint', function () {
-
-  'use strict';
-
-  QUnit.module('JSHint - unit/initializers');
-  QUnit.test('unit/initializers/component-store-injector-test.js should pass jshint', function(assert) { 
-    assert.ok(true, 'unit/initializers/component-store-injector-test.js should pass jshint.'); 
-  });
-
-});
-define('urban-radio/tests/unit/models/message-test', ['ember-qunit'], function (ember_qunit) {
-
-  'use strict';
-
-  ember_qunit.moduleForModel('message', 'Unit | Model | message', {
-    // Specify the other units that are required for this test.
-    needs: []
-  });
-
-  ember_qunit.test('it exists', function (assert) {
-    var model = this.subject();
-    // var store = this.store();
-    assert.ok(!!model);
-  });
-
-});
-define('urban-radio/tests/unit/models/message-test.jshint', function () {
-
-  'use strict';
-
-  QUnit.module('JSHint - unit/models');
-  QUnit.test('unit/models/message-test.js should pass jshint', function(assert) { 
-    assert.ok(true, 'unit/models/message-test.js should pass jshint.'); 
-  });
-
-});
-define('urban-radio/tests/unit/routes/home-test', ['ember-qunit'], function (ember_qunit) {
-
-  'use strict';
-
-  ember_qunit.moduleFor('route:home', 'Unit | Route | home', {
-    // Specify the other units that are required for this test.
-    // needs: ['controller:foo']
-  });
-
-  ember_qunit.test('it exists', function (assert) {
-    var route = this.subject();
-    assert.ok(route);
-  });
-
-});
-define('urban-radio/tests/unit/routes/home-test.jshint', function () {
-
-  'use strict';
-
-  QUnit.module('JSHint - unit/routes');
-  QUnit.test('unit/routes/home-test.js should pass jshint', function(assert) { 
-    assert.ok(true, 'unit/routes/home-test.js should pass jshint.'); 
-  });
-
-});
 define('urban-radio/tests/unit/routes/player-test', ['ember-qunit'], function (ember_qunit) {
 
   'use strict';
@@ -2230,7 +1942,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+e747051d"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+1f73bc6d"});
 }
 
 /* jshint ignore:end */
