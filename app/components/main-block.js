@@ -39,7 +39,7 @@ export default Ember.Component.extend({
 
   actions: {
     openPlayer() {
-      window.open('/player', 'UrbanRadio', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=550,height=243');
+      window.open('#/player', 'UrbanRadio', 'directories=no,titlebar=no,toolbar=no,location=no,status=no,menubar=no,scrollbars=no,resizable=no,width=550,height=243');
     },
     nextVideo() {
       this.set('videoIndex', (this.get('videoIndex') + 1) % this.get('videoIds').length);
