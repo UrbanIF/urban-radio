@@ -1,0 +1,32 @@
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  letter-spacing: normal;
+  line-height: 1.5em;
+}
+
+button {
+  border: none;
+}
+
+.clearfix:before,
+.clearfix:after {
+  content:"";
+  display:table;
+}
+.clearfix:after {
+  clear:both;
+}
+.clearfix {
+  zoom:1; /* For IE 6/7 (trigger hasLayout) */
+}
+
+.container {
+  max-width: 960px;
+  margin: 0 auto;
+}
+
+
+@import 'components/x-player';
+@import 'components/announcments';
+@import 'components/main';

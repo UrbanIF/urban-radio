@@ -1,0 +1,27 @@
+<header class='x-payer__header'>
+  <div class='x-payer__header-wrap'>
+    <div class='x-payer__logo'></div>
+    <div class='x-payer__now-title'>Ви слухаєте</div>
+    <div class='x-payer__now-song'>Onuka – When I met you</div>
+  </div>
+</header>
+<div class='x-payer__central'>
+
+  <button class='x-payer__play-btn' {{action 'playPause'}}></button>
+
+  <button class='x-payer__sound-btn' {{action 'muteUnmute'}}></button>
+
+  {{x-sound-slider value=soundLevel }}
+
+  <div class='x-payer__timer'>02 : 42   -   00 : 32</div>
+
+</div>
+<footer class='x-payer__footer'>
+    <span class='x-payer__next-title'>Далі в ефірі</span>{{!--
+--}}<span class='x-payer__next-song'>Океан Ельзи — Життя починається знов</span>
+</footer>
+
+<video class='audio-el' controls="" autoplay="" name="media">
+  {{!-- <source src="http://http-live.sr.se/p3-mp3-192" type="audio/mpeg"> --}}
+  <source src="/assets/onuka.mp3" type="audio/mpeg">
+</video>

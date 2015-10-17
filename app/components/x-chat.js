@@ -6,7 +6,9 @@ export default Ember.Component.extend({
   messages: '',
 
   loadMessages() {
-    this.set('messages', this.store.findAll('message'));
+    this.set('messages', this.store.find('message', {
+      limitToLast: 3
+    }));
   },
 
   didInsertElement() {

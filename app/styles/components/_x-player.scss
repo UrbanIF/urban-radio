@@ -1,0 +1,132 @@
+.x-player {
+  width: 550px;
+}
+
+.x-payer__header {
+  height: 70px;
+  background: #cbfffc;
+}
+  .x-payer__header-wrap {
+    padding: 17px 33px 0 33px;
+  }
+    .x-payer__now-title {
+      color:  #17cac0;
+    }
+    .x-payer__now-song {
+      font-size: 22px;
+    }
+    .x-payer__logo {
+      background: url('/assets/x-player-logo.png') no-repeat;
+      width: 100px;
+      height: 38px;
+      float: right;
+    }
+
+
+.x-payer__central {
+  background: gray;
+  position: relative;
+  height: 111px;
+
+  background: url('/assets/onuka.jpg') no-repeat center center;
+
+}
+
+
+  .x-payer__play-btn {
+    border-radius: 50%;
+    width: 72px;
+    height: 72px;
+    background: #cbfffc url('/assets/play-green.png') no-repeat center center;
+
+    position: absolute;
+    top: 50%;
+    left: 33px;
+    transform: translateY(-50%);
+  }
+  .is-playing .x-payer__play-btn {
+    background: #cbfffc url('/assets/stop-icon.png') no-repeat center center;
+  }
+
+  .x-payer__sound-btn {
+    background: url('/assets/sound-icon.png') no-repeat;
+    width: 24px;
+    height: 22px;
+
+    position: absolute;
+    top: 50%;
+    left: 146px;
+    transform: translateY(-50%);
+  }
+
+  .is-muted .x-payer__sound-btn {
+    background: url('/assets/sound-muted-icon.png') no-repeat;
+  }
+
+  .x-payer__sound-bar {
+    width: 178px;
+    height: 18px;
+    border-radius: 9px;
+    position: relative;
+    background-color:  #eaeaea;
+    border: 2px solid #fbfbfb;
+    position: absolute;
+    top: 50%;
+    left: 180px;
+    transform: translateY(-50%);
+    overflow: hidden;
+  }
+
+    .x-payer__sound-bar-progress {
+      background-color:  #ffa998;
+      height: 100%;
+      width: 15%;
+    }
+
+    .x-payer__sound-bar-row {
+      position: absolute;
+      top: 0;
+      width: 2px;
+      height: 100%;
+      background-color: #fbfbfb;
+      z-index: 10;
+      &.r1 { left: 16px; }
+      &.r2 { left: 36px; }
+      &.r3 { left: 56px; }
+      &.r4 { left: 76px; }
+      &.r5 { left: 96px; }
+      &.r6 { left: 116px; }
+      &.r7 { left: 136px; }
+      &.r8 { left: 156px; }
+    }
+
+
+  .x-payer__timer {
+    color:  #1b1b1b;
+    font-weight: 700;
+
+
+    position: absolute;
+    top: 50%;
+    left: 409px;
+    transform: translateY(-50%);
+  }
+
+.x-payer__footer {
+  height: 62px;
+  line-height: 62px;
+  color:  #636363;
+  background-color:  #282828;
+}
+  .x-payer__next-title {
+    font-weight: 400;
+    margin:  0 34px 0 33px;
+  }
+
+  .x-payer__next-song {
+    font-weight: 700;
+  }
+
+.audio-el {
+  display: none;
+}
