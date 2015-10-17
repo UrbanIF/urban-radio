@@ -1111,7 +1111,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 44,
+            "line": 42,
             "column": 0
           }
         },
@@ -1144,7 +1144,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
         dom.setAttribute(el5,"class","announcment-bg");
-        dom.setAttribute(el5,"style","background-image: url('assets/announce-bg.jpg');");
+        dom.setAttribute(el5,"style","background-image: url('assets/article1.jpg');");
         dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
@@ -1185,7 +1185,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
         dom.setAttribute(el5,"class","announcment-bg");
-        dom.setAttribute(el5,"style","background-image: url('assets/announce-bg.jpg');");
+        dom.setAttribute(el5,"style","background-image: url('assets/article2.jpg');");
         dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
@@ -1226,7 +1226,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.appendChild(el4, el5);
         var el5 = dom.createElement("div");
         dom.setAttribute(el5,"class","announcment-bg");
-        dom.setAttribute(el5,"style","background-image: url('assets/announce-bg.jpg');");
+        dom.setAttribute(el5,"style","background-image: url('assets/article3.jpg');");
         dom.appendChild(el4, el5);
         var el5 = dom.createTextNode("\n        ");
         dom.appendChild(el4, el5);
@@ -1258,6 +1258,16 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("section");
+        dom.setAttribute(el3,"class","announcment");
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4,"class","announcment-inner ann-fake");
+        var el5 = dom.createTextNode("\n      ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n    ");
+        dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
         var el3 = dom.createTextNode("\n  ");
         dom.appendChild(el2, el3);
@@ -1265,11 +1275,14 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n\n\n\n\n");
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","big-fake");
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n\n\n\n");
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
@@ -1278,17 +1291,15 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(3);
+        var morphs = new Array(2);
         morphs[0] = dom.createMorphAt(fragment,0,0,contextualElement);
-        morphs[1] = dom.createMorphAt(fragment,4,4,contextualElement);
-        morphs[2] = dom.createMorphAt(fragment,6,6,contextualElement);
+        morphs[1] = dom.createMorphAt(fragment,7,7,contextualElement);
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
       statements: [
         ["content","main-block",["loc",[null,[1,0],[1,14]]]],
-        ["content","x-chat",["loc",[null,[38,0],[38,10]]]],
-        ["content","outlet",["loc",[null,[43,0],[43,10]]]]
+        ["content","outlet",["loc",[null,[41,0],[41,10]]]]
       ],
       locals: [],
       templates: []
@@ -1942,7 +1953,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+1f73bc6d"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+8676efad"});
 }
 
 /* jshint ignore:end */

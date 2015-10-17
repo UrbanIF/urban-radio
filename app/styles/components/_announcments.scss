@@ -15,6 +15,11 @@
     position: relative;
     overflow: hidden;
     cursor: pointer;
+    background: #000;
+  }
+
+  .ann-fake {
+    background: url('my-ideas-fake.png');
   }
 
   .announcment-bg {
@@ -34,6 +39,7 @@
     -moz-transition: -moz-transform 0.5s ease-in;
     -o-transition: -o-transform 0.5s ease-in;
     transition: transform 0.5s ease-in;
+    opacity: 0.5;
   }
 
   .announcment-inner:hover .announcment-bg {
@@ -68,3 +74,10 @@
       z-index: 3;
       position: relative;
     }
+
+.big-fake {
+  background: url("fake-big.png") center center;
+  width: 960px;
+  height: 706px;
+  margin: auto;
+}
