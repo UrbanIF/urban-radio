@@ -1324,13 +1324,13 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
           return el0;
         },
         buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element2 = dom.childAt(fragment, [1]);
-          var element3 = dom.childAt(element2, [1, 1]);
-          var element4 = dom.childAt(element2, [3]);
+          var element0 = dom.childAt(fragment, [1]);
+          var element1 = dom.childAt(element0, [1, 1]);
+          var element2 = dom.childAt(element0, [3]);
           var morphs = new Array(3);
-          morphs[0] = dom.createAttrMorph(element3, 'src');
-          morphs[1] = dom.createMorphAt(dom.childAt(element4, [1]),0,0);
-          morphs[2] = dom.createMorphAt(dom.childAt(element4, [3]),0,0);
+          morphs[0] = dom.createAttrMorph(element1, 'src');
+          morphs[1] = dom.createMorphAt(dom.childAt(element2, [1]),0,0);
+          morphs[2] = dom.createMorphAt(dom.childAt(element2, [3]),0,0);
           return morphs;
         },
         statements: [
@@ -1339,108 +1339,6 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
           ["content","message.body",["loc",[null,[13,43],[13,59]]]]
         ],
         locals: ["message"],
-        templates: []
-      };
-    }());
-    var child1 = (function() {
-      return {
-        meta: {
-          "revision": "Ember@1.13.10",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 38,
-              "column": 0
-            },
-            "end": {
-              "line": 42,
-              "column": 0
-            }
-          },
-          "moduleName": "urban-radio/templates/components/x-chat.hbs"
-        },
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("  Logged in as ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("button");
-          var el2 = dom.createTextNode("Sign out");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createComment("");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element1 = dom.childAt(fragment, [3]);
-          var morphs = new Array(3);
-          morphs[0] = dom.createMorphAt(fragment,1,1,contextualElement);
-          morphs[1] = dom.createElementMorph(element1);
-          morphs[2] = dom.createMorphAt(fragment,5,5,contextualElement);
-          return morphs;
-        },
-        statements: [
-          ["content","session.currentUser.displayName",["loc",[null,[39,15],[39,50]]]],
-          ["element","action",["signOut"],[],["loc",[null,[40,10],[40,30]]]],
-          ["content","outlet",["loc",[null,[41,2],[41,12]]]]
-        ],
-        locals: [],
-        templates: []
-      };
-    }());
-    var child2 = (function() {
-      return {
-        meta: {
-          "revision": "Ember@1.13.10",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 42,
-              "column": 0
-            },
-            "end": {
-              "line": 44,
-              "column": 0
-            }
-          },
-          "moduleName": "urban-radio/templates/components/x-chat.hbs"
-        },
-        arity: 0,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("button");
-          var el2 = dom.createTextNode("Sign in with Facebook");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var element0 = dom.childAt(fragment, [1]);
-          var morphs = new Array(1);
-          morphs[0] = dom.createElementMorph(element0);
-          return morphs;
-        },
-        statements: [
-          ["element","action",["signIn","facebook"],[],["loc",[null,[43,10],[43,40]]]]
-        ],
-        locals: [],
         templates: []
       };
     }());
@@ -1529,32 +1427,27 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
         var el2 = dom.createTextNode("\n\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element5 = dom.childAt(fragment, [0]);
-        var element6 = dom.childAt(element5, [5, 3]);
-        var element7 = dom.childAt(element6, [3]);
-        var morphs = new Array(4);
-        morphs[0] = dom.createMorphAt(dom.childAt(element5, [3]),1,1);
-        morphs[1] = dom.createMorphAt(element6,1,1);
-        morphs[2] = dom.createElementMorph(element7);
-        morphs[3] = dom.createMorphAt(fragment,2,2,contextualElement);
-        dom.insertBoundary(fragment, null);
+        var element3 = dom.childAt(fragment, [0]);
+        var element4 = dom.childAt(element3, [5, 3]);
+        var element5 = dom.childAt(element4, [3]);
+        var morphs = new Array(3);
+        morphs[0] = dom.createMorphAt(dom.childAt(element3, [3]),1,1);
+        morphs[1] = dom.createMorphAt(element4,1,1);
+        morphs[2] = dom.createElementMorph(element5);
         return morphs;
       },
       statements: [
         ["block","each",[["get","messages",["loc",[null,[6,12],[6,20]]]]],[],0,null,["loc",[null,[6,4],[16,13]]]],
         ["inline","textarea",[],["class","x-chat-bot-textarea","value",["subexpr","@mut",[["get","messageBody",["loc",[null,[26,51],[26,62]]]]],[],[]],"placeholder","enter message","type","text"],["loc",[null,[26,6],[26,105]]]],
-        ["element","action",["sendMessage"],[],["loc",[null,[27,37],[27,61]]]],
-        ["block","if",[["get","session.isAuthenticated",["loc",[null,[38,6],[38,29]]]]],[],1,2,["loc",[null,[38,0],[44,7]]]]
+        ["element","action",["sendMessage"],[],["loc",[null,[27,37],[27,61]]]]
       ],
       locals: [],
-      templates: [child0, child1, child2]
+      templates: [child0]
     };
   }()));
 
@@ -3078,7 +2971,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+e063523f"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+4d4078b0"});
 }
 
 /* jshint ignore:end */

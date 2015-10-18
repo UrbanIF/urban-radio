@@ -231,13 +231,13 @@ button {
   font-weight: 700;
   color: #fff;
   text-align: center;
-  position: relative;
-  overflow: hidden;
   background: #000; }
 
 .announcment-inner a {
   display: block;
   height: 280px;
+  overflow: hidden;
+  position: relative;
   text-decoration: none;
   color: #fff; }
 
