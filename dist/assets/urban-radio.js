@@ -2971,7 +2971,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+29a7adea"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+e063523f"});
 }
 
 /* jshint ignore:end */
