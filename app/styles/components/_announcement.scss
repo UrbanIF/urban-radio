@@ -1,0 +1,104 @@
+.op-header {
+  background-color:  #e3e3e3;
+  height: 55px;
+}
+
+
+.op-header__link-back {
+  color:  #bfbfbf;
+  font-weight: 700;
+  display: inline-block;
+  text-decoration: none;
+  margin-top: 12px;
+}
+
+.op-header__link-back-icon {
+  display: inline-block;
+  height: 30px;
+  width: 30px;
+  border-radius: 50%;
+  background: #bfbfbf url("arrow-left.png") 45% center no-repeat;
+  vertical-align: middle;
+}
+
+
+.op-header__logo {
+  height: 38px;
+  margin-top: 10px;
+  background: url('header-logo-back.png') center center no-repeat;
+}
+
+.op-header__socials {
+  text-align: right;
+  margin-top: 12px;
+  .f-fb {
+    background: url('fb-c-icon.png');
+  }
+  .f-tw {
+    background: url('tw-c-icon.png');
+  }
+}
+
+
+
+.o-ann-h1 {
+  color:  #111111;
+  font-size: 40px;
+  font-weight: 700;
+  margin: 45px 0 20px;
+  line-height: 1;
+}
+.o-ann-h2 {
+  color:  #913b0b;
+  font-size: 22px;
+  font-weight: 400;
+  line-height: 22px;
+}
+
+.o-ann-text-wrap {
+  position: relative;
+}
+
+  .o-ann-text {
+    margin: 30px 0 50px;
+    color:  #686868;
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 20px;
+    text-align: left;
+    padding-right: 236px;
+
+    img {
+      margin: 20px 0;
+    }
+
+    p {
+      margin: 18px 0;
+    }
+
+  }
+
+  .o-ann-qoutes {
+    width: 173px;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  .o-ann-qoute {
+    color:  #31ab82;
+    font-size: 18px;
+    font-weight: 300;
+    line-height: 26px;
+  }
+    .o-ann-qoute-name {
+      color:  #323232;
+      font-size: 14px;
+      font-weight: 700;
+    }
+
+    .o-ann-qoute-icon {
+      width: 40px;
+      height: 40px;
+      border-radius: 50%;
+    }
