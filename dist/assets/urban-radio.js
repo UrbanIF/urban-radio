@@ -1488,7 +1488,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.setAttribute(el6,"class","schedule-item__g-calendar");
         dom.setAttribute(el6,"target","_blank");
         dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
-        var el7 = dom.createTextNode("sadfasdf");
+        var el7 = dom.createTextNode("додати в календар");
         dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
         var el6 = dom.createTextNode("\n        ");
@@ -1525,7 +1525,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.setAttribute(el6,"class","schedule-item__g-calendar");
         dom.setAttribute(el6,"target","_blank");
         dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
-        var el7 = dom.createTextNode("sadfasdf");
+        var el7 = dom.createTextNode("додати в календар");
         dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
         var el6 = dom.createTextNode("\n        ");
@@ -1562,7 +1562,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         dom.setAttribute(el6,"class","schedule-item__g-calendar");
         dom.setAttribute(el6,"target","_blank");
         dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
-        var el7 = dom.createTextNode("sadfasdf");
+        var el7 = dom.createTextNode("додати в календар");
         dom.appendChild(el6, el7);
         dom.appendChild(el5, el6);
         var el6 = dom.createTextNode("\n        ");
@@ -2416,7 +2416,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+248df4f1"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+f2cefb9a"});
 }
 
 /* jshint ignore:end */
