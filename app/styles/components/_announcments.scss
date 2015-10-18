@@ -1,7 +1,7 @@
 .announcments {
   margin: 0 -3px;
 }
-.announcment {
+.announcment, .schedule, .x-chat {
   float: left;
   box-sizing: border-box;
   padding: 3px;
@@ -17,6 +17,7 @@
     cursor: pointer;
     background: #000;
   }
+
 
   .ann-fake {
     background: url('my-ideas-fake.png');
@@ -81,3 +82,63 @@
   height: 706px;
   margin: auto;
 }
+
+
+.schedule-inner {
+  margin: 40px 27px;
+}
+
+.schedule-main-title {
+  color:  #c8c8c8;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 0;
+}
+
+.schedule-item {
+  overflow: hidden;
+  margin-top: 41px;
+}
+  .schedule-timer {
+    border-radius: 50%;
+    background-color:  rgba(0, 0, 0, 0.2);
+    width: 64px;
+    height: 64px;
+    line-height: 64px;
+    text-align: center;
+    color:  #ffffff;
+    font-weight: 700;
+    float: left;
+    margin-right: 9px;
+    position: relative;
+  }
+  .schedule-timer:after {
+    content: '';
+    position: absolute;
+    bottom: -11px;
+    left: 0;
+    right: 0;
+    margin: auto;
+    width: 34px;
+    height: 34px;
+    background: url('clock-icon.png');
+  }
+
+  .schedule-item__subtitle {
+    color:  #838383;
+    margin: 5px 0 0 0;
+  }
+  .schedule-item__title {
+    color:  #1b1b1b;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 18px;
+    margin: 0;
+  }
+  .schedule-item__g-calendar {
+    color:  #118a96;
+    font-size: 14px;
+    font-weight: 700;
+    line-height: 22px;
+    text-decoration: underline;
+  }

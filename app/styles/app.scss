@@ -24,9 +24,12 @@ button {
 .container {
   max-width: 960px;
   margin: 0 auto;
+  padding: 0 10px;
 }
 
 
 @import 'components/x-player';
+@import 'components/x-chat';
 @import 'components/announcments';
 @import 'components/main';
+@import 'components/main-footer';

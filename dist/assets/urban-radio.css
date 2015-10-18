@@ -21,7 +21,8 @@ button {
 
 .container {
   max-width: 960px;
-  margin: 0 auto; }
+  margin: 0 auto;
+  padding: 0 10px; }
 
 .x-player {
   width: 550px; }
@@ -142,10 +143,85 @@ button {
 .audio-el {
   display: none; }
 
+.x-chat-inner {
+  background-color: #eaeaea;
+  padding: 17px 7px 0; }
+
+.x-chat-icon {
+  width: 20px;
+  height: 10px;
+  background: url("x-chat-icon.png");
+  margin-left: 10px; }
+
+.x-chat-msgs-wrap {
+  height: 500px;
+  overflow-y: scroll; }
+
+.x-chat-message {
+  position: relative;
+  padding: 20px 20px 20px 58px;
+  border-bottom: 1px solid #d7d7d7; }
+
+.x-chat-user-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 30px; }
+
+.x-chat-user-name {
+  color: #323232;
+  font-weight: 700; }
+
+.x-chat-user-message {
+  color: #7c7c7c;
+  line-height: 26px; }
+
+.x-chat-bot {
+  position: relative;
+  padding: 20px 20px 20px 58px; }
+
+.x-chat-bot-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  position: absolute;
+  left: 0;
+  top: 20px; }
+
+.x-chat-bot-textarea {
+  display: block;
+  width: 100%;
+  border: none;
+  padding: 10px;
+  box-sizing: border-box; }
+
+.x-chat-bot-btn {
+  margin-top: 10px;
+  float: right;
+  color: #1398a4;
+  font-weight: 700;
+  padding: 0 0 0 51px;
+  background: none;
+  line-height: 40px;
+  height: 40px;
+  position: relative; }
+
+.x-chat-bot-btn-icon {
+  display: block;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  box-shadow: -1px 1px 3px 0px rgba(0, 0, 0, 0.47);
+  background: #54ffdd url("x-chat-btn-icon.png") center center no-repeat;
+  position: absolute;
+  left: 0; }
+
 .announcments {
   margin: 0 -3px; }
 
-.announcment {
+.announcment, .schedule, .x-chat {
   float: left;
   box-sizing: border-box;
   padding: 3px;
@@ -220,6 +296,61 @@ button {
   width: 960px;
   height: 706px;
   margin: auto; }
+
+.schedule-inner {
+  margin: 40px 27px; }
+
+.schedule-main-title {
+  color: #c8c8c8;
+  font-size: 30px;
+  font-weight: 700;
+  margin-top: 0; }
+
+.schedule-item {
+  overflow: hidden;
+  margin-top: 41px; }
+
+.schedule-timer {
+  border-radius: 50%;
+  background-color: rgba(0, 0, 0, 0.2);
+  width: 64px;
+  height: 64px;
+  line-height: 64px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: 700;
+  float: left;
+  margin-right: 9px;
+  position: relative; }
+
+.schedule-timer:after {
+  content: '';
+  position: absolute;
+  bottom: -11px;
+  left: 0;
+  right: 0;
+  margin: auto;
+  width: 34px;
+  height: 34px;
+  background: url("clock-icon.png"); }
+
+.schedule-item__subtitle {
+  color: #838383;
+  margin: 5px 0 0 0; }
+
+.schedule-item__title {
+  color: #1b1b1b;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 18px;
+  margin: 0; }
+
+.schedule-item__g-calendar {
+  color: #118a96;
+  font-size: 14px;
+  font-weight: 700;
+  line-height: 22px;
+  text-decoration: underline; }
 
 .main-block__header {
   overflow: hidden;
@@ -352,5 +483,39 @@ button {
   height: 47px;
   border-radius: 50%;
   background: #e2e2e2 url("video-icon.png") center 45% no-repeat; }
+
+.b13 {
+  float: left;
+  width: 33.33%; }
+
+.main-footer {
+  background-color: #122b2e;
+  height: 88px; }
+
+.main-footer__rights {
+  color: #1fe8dc;
+  font-weight: 700;
+  line-height: 88px;
+  margin: 0; }
+
+.main-footer__logo {
+  background: url("footer-logo.png") no-repeat center center;
+  height: 88px; }
+
+.main-footer__socials {
+  text-align: right;
+  margin-top: 30px; }
+
+.f-fb, .f-tw {
+  display: inline-block;
+  width: 30px;
+  height: 30px;
+  margin-left: 10px; }
+
+.f-fb {
+  background: url("fb-icon.png"); }
+
+.f-tw {
+  background: url("tw-icon.png"); }
 
 /*# sourceMappingURL=urban-radio.css.map */

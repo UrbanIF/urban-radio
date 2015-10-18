@@ -107,18 +107,27 @@ define('urban-radio/components/main-block', ['exports', 'ember'], function (expo
   });
 
 });
+define('urban-radio/components/main-footer', ['exports', 'ember'], function (exports, Ember) {
+
+	'use strict';
+
+	exports['default'] = Ember['default'].Component.extend({});
+
+});
 define('urban-radio/components/x-chat', ['exports', 'ember'], function (exports, Ember) {
 
   'use strict';
 
   exports['default'] = Ember['default'].Component.extend({
 
+    classNames: ['x-chat'],
+
     messageBody: '',
     messages: '',
 
     loadMessages: function loadMessages() {
       this.set('messages', this.store.find('message', {
-        limitToLast: 3
+        limitToLast: 10
       }));
     },
 
@@ -129,6 +138,8 @@ define('urban-radio/components/x-chat', ['exports', 'ember'], function (exports,
     actions: {
       sendMessage: function sendMessage() {
         var message = this.store.createRecord('message', {
+          userIcon: 'assets/x-chat-user-icon.png',
+          userName: 'Іван',
           body: this.get('messageBody')
         });
         message.save();
@@ -340,6 +351,8 @@ define('urban-radio/models/message', ['exports', 'ember-data'], function (export
   'use strict';
 
   exports['default'] = DS['default'].Model.extend({
+    userIcon: DS['default'].attr('string'),
+    userName: DS['default'].attr('string'),
     body: DS['default'].attr('string')
   });
 
@@ -481,7 +494,7 @@ define('urban-radio/templates/components/main-block', ['exports'], function (exp
             "column": 0
           },
           "end": {
-            "line": 36,
+            "line": 33,
             "column": 0
           }
         },
@@ -503,11 +516,7 @@ define('urban-radio/templates/components/main-block', ['exports'], function (exp
         var el3 = dom.createElement("div");
         dom.setAttribute(el3,"id","header-video");
         dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("    ");
+        var el3 = dom.createTextNode("\n    ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("div");
         dom.setAttribute(el3,"class","listeners");
@@ -630,9 +639,87 @@ define('urban-radio/templates/components/main-block', ['exports'], function (exp
         return morphs;
       },
       statements: [
-        ["element","action",["openPlayer"],[],["loc",[null,[17,44],[17,67]]]],
-        ["element","action",["prevVideo"],[],["loc",[null,[31,46],[31,68]]]],
-        ["element","action",["nextVideo"],[],["loc",[null,[32,46],[32,68]]]]
+        ["element","action",["openPlayer"],[],["loc",[null,[14,44],[14,67]]]],
+        ["element","action",["prevVideo"],[],["loc",[null,[28,46],[28,68]]]],
+        ["element","action",["nextVideo"],[],["loc",[null,[29,46],[29,68]]]]
+      ],
+      locals: [],
+      templates: []
+    };
+  }()));
+
+});
+define('urban-radio/templates/components/main-footer', ['exports'], function (exports) {
+
+  'use strict';
+
+  exports['default'] = Ember.HTMLBars.template((function() {
+    return {
+      meta: {
+        "revision": "Ember@1.13.10",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 9,
+            "column": 0
+          }
+        },
+        "moduleName": "urban-radio/templates/components/main-footer.hbs"
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","container clearfix");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("p");
+        dom.setAttribute(el2,"class","main-footer__rights b13");
+        var el3 = dom.createTextNode("©All rights reserved");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","main-footer__logo b13");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","main-footer__socials b13");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("a");
+        dom.setAttribute(el3,"class","f-fb");
+        dom.setAttribute(el3,"href","#");
+        dom.setAttribute(el3,"target","_blank");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("a");
+        dom.setAttribute(el3,"class","f-tw");
+        dom.setAttribute(el3,"href","#");
+        dom.setAttribute(el3,"target","_blank");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
       ],
       locals: [],
       templates: []
@@ -652,11 +739,96 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
           "loc": {
             "source": null,
             "start": {
-              "line": 3,
+              "line": 6,
+              "column": 4
+            },
+            "end": {
+              "line": 16,
+              "column": 4
+            }
+          },
+          "moduleName": "urban-radio/templates/components/x-chat.hbs"
+        },
+        arity: 1,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("      ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("div");
+          dom.setAttribute(el1,"class","x-chat-message");
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2,"class","x-chat-user-icon");
+          var el3 = dom.createTextNode("\n          ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("img");
+          dom.setAttribute(el3,"class","x-chat-user-icon-img");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n        ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n        ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2,"class","x-chat-user-other");
+          var el3 = dom.createTextNode("\n          ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("div");
+          dom.setAttribute(el3,"class","x-chat-user-name");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n          ");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createElement("div");
+          dom.setAttribute(el3,"class","x-chat-user-message");
+          var el4 = dom.createComment("");
+          dom.appendChild(el3, el4);
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("\n        ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n      ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var element2 = dom.childAt(fragment, [1]);
+          var element3 = dom.childAt(element2, [1, 1]);
+          var element4 = dom.childAt(element2, [3]);
+          var morphs = new Array(3);
+          morphs[0] = dom.createAttrMorph(element3, 'src');
+          morphs[1] = dom.createMorphAt(dom.childAt(element4, [1]),0,0);
+          morphs[2] = dom.createMorphAt(dom.childAt(element4, [3]),0,0);
+          return morphs;
+        },
+        statements: [
+          ["attribute","src",["get","message.userIcon",["loc",[null,[9,50],[9,66]]]]],
+          ["content","message.userName",["loc",[null,[12,40],[12,60]]]],
+          ["content","message.body",["loc",[null,[13,43],[13,59]]]]
+        ],
+        locals: ["message"],
+        templates: []
+      };
+    }());
+    var child1 = (function() {
+      return {
+        meta: {
+          "revision": "Ember@1.13.10",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 38,
               "column": 0
             },
             "end": {
-              "line": 7,
+              "line": 42,
               "column": 0
             }
           },
@@ -694,26 +866,26 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
           return morphs;
         },
         statements: [
-          ["content","session.currentUser.displayName",["loc",[null,[4,15],[4,50]]]],
-          ["element","action",["signOut"],[],["loc",[null,[5,10],[5,30]]]],
-          ["content","outlet",["loc",[null,[6,2],[6,12]]]]
+          ["content","session.currentUser.displayName",["loc",[null,[39,15],[39,50]]]],
+          ["element","action",["signOut"],[],["loc",[null,[40,10],[40,30]]]],
+          ["content","outlet",["loc",[null,[41,2],[41,12]]]]
         ],
         locals: [],
         templates: []
       };
     }());
-    var child1 = (function() {
+    var child2 = (function() {
       return {
         meta: {
           "revision": "Ember@1.13.10",
           "loc": {
             "source": null,
             "start": {
-              "line": 7,
+              "line": 42,
               "column": 0
             },
             "end": {
-              "line": 9,
+              "line": 44,
               "column": 0
             }
           },
@@ -741,59 +913,9 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
           return morphs;
         },
         statements: [
-          ["element","action",["signIn","facebook"],[],["loc",[null,[8,10],[8,40]]]]
+          ["element","action",["signIn","facebook"],[],["loc",[null,[43,10],[43,40]]]]
         ],
         locals: [],
-        templates: []
-      };
-    }());
-    var child2 = (function() {
-      return {
-        meta: {
-          "revision": "Ember@1.13.10",
-          "loc": {
-            "source": null,
-            "start": {
-              "line": 12,
-              "column": 0
-            },
-            "end": {
-              "line": 16,
-              "column": 0
-            }
-          },
-          "moduleName": "urban-radio/templates/components/x-chat.hbs"
-        },
-        arity: 1,
-        cachedFragment: null,
-        hasRendered: false,
-        buildFragment: function buildFragment(dom) {
-          var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("  ");
-          dom.appendChild(el0, el1);
-          var el1 = dom.createElement("div");
-          var el2 = dom.createTextNode("\n    message: ");
-          dom.appendChild(el1, el2);
-          var el2 = dom.createElement("span");
-          var el3 = dom.createComment("");
-          dom.appendChild(el2, el3);
-          dom.appendChild(el1, el2);
-          var el2 = dom.createTextNode("\n  ");
-          dom.appendChild(el1, el2);
-          dom.appendChild(el0, el1);
-          var el1 = dom.createTextNode("\n");
-          dom.appendChild(el0, el1);
-          return el0;
-        },
-        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-          var morphs = new Array(1);
-          morphs[0] = dom.createMorphAt(dom.childAt(fragment, [1, 1]),0,0);
-          return morphs;
-        },
-        statements: [
-          ["content","message.body",["loc",[null,[14,19],[14,35]]]]
-        ],
-        locals: ["message"],
         templates: []
       };
     }());
@@ -807,7 +929,7 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
             "column": 0
           },
           "end": {
-            "line": 21,
+            "line": 45,
             "column": 0
           }
         },
@@ -818,42 +940,93 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("chat\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createComment("");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("button");
-        var el2 = dom.createTextNode("send");
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","x-chat-inner");
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","x-chat-icon");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","x-chat-msgs-wrap");
+        var el3 = dom.createTextNode("\n");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","x-chat-bot");
+        var el3 = dom.createTextNode("\n\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","x-chat-bot-icon");
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("img");
+        dom.setAttribute(el4,"class","x-chat-bot-icon-img");
+        dom.setAttribute(el4,"src","assets/x-chat-user-icon.png");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n    ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","x-chat-bot-other clearfix");
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("button");
+        dom.setAttribute(el4,"class","x-chat-bot-btn");
+        var el5 = dom.createTextNode("\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("span");
+        dom.setAttribute(el5,"class","x-chat-bot-btn-icon");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n        Опоблікувати\n      ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n    ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\n\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element2 = dom.childAt(fragment, [7]);
+        var element5 = dom.childAt(fragment, [0]);
+        var element6 = dom.childAt(element5, [5, 3]);
+        var element7 = dom.childAt(element6, [3]);
         var morphs = new Array(4);
-        morphs[0] = dom.createMorphAt(fragment,1,1,contextualElement);
-        morphs[1] = dom.createMorphAt(fragment,3,3,contextualElement);
-        morphs[2] = dom.createMorphAt(fragment,5,5,contextualElement);
-        morphs[3] = dom.createElementMorph(element2);
+        morphs[0] = dom.createMorphAt(dom.childAt(element5, [3]),1,1);
+        morphs[1] = dom.createMorphAt(element6,1,1);
+        morphs[2] = dom.createElementMorph(element7);
+        morphs[3] = dom.createMorphAt(fragment,2,2,contextualElement);
+        dom.insertBoundary(fragment, null);
         return morphs;
       },
       statements: [
-        ["block","if",[["get","session.isAuthenticated",["loc",[null,[3,6],[3,29]]]]],[],0,1,["loc",[null,[3,0],[9,7]]]],
-        ["block","each",[["get","messages",["loc",[null,[12,8],[12,16]]]]],[],2,null,["loc",[null,[12,0],[16,9]]]],
-        ["inline","input",[],["value",["subexpr","@mut",[["get","messageBody",["loc",[null,[19,14],[19,25]]]]],[],[]],"class","form-control","placeholder","enter message","type","text"],["loc",[null,[19,0],[19,88]]]],
-        ["element","action",["sendMessage"],[],["loc",[null,[20,8],[20,32]]]]
+        ["block","each",[["get","messages",["loc",[null,[6,12],[6,20]]]]],[],0,null,["loc",[null,[6,4],[16,13]]]],
+        ["inline","textarea",[],["class","x-chat-bot-textarea","value",["subexpr","@mut",[["get","messageBody",["loc",[null,[26,51],[26,62]]]]],[],[]],"placeholder","enter message","type","text"],["loc",[null,[26,6],[26,105]]]],
+        ["element","action",["sendMessage"],[],["loc",[null,[27,37],[27,61]]]],
+        ["block","if",[["get","session.isAuthenticated",["loc",[null,[38,6],[38,29]]]]],[],1,2,["loc",[null,[38,0],[44,7]]]]
       ],
       locals: [],
       templates: [child0, child1, child2]
@@ -1111,7 +1284,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 42,
+            "line": 75,
             "column": 0
           }
         },
@@ -1269,18 +1442,151 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         var el4 = dom.createTextNode("\n    ");
         dom.appendChild(el3, el4);
         dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n  ");
+        var el3 = dom.createTextNode("\n\n\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("section");
+        dom.setAttribute(el3,"class","schedule");
+        var el4 = dom.createTextNode("\n      ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4,"class","schedule-inner");
+        var el5 = dom.createTextNode("\n\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("h2");
+        dom.setAttribute(el5,"class","schedule-main-title");
+        var el6 = dom.createTextNode("Сьогодні в ефірі");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"class","schedule-item");
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6,"class","schedule-timer");
+        var el7 = dom.createTextNode("12:40");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("h4");
+        dom.setAttribute(el6,"class","schedule-item__subtitle");
+        var el7 = dom.createTextNode("Інтерв’ю");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("h3");
+        dom.setAttribute(el6,"class","schedule-item__title");
+        var el7 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("a");
+        dom.setAttribute(el6,"class","schedule-item__g-calendar");
+        dom.setAttribute(el6,"target","_blank");
+        dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
+        var el7 = dom.createTextNode("sadfasdf");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n        ");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"class","schedule-item");
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6,"class","schedule-timer");
+        var el7 = dom.createTextNode("12:40");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("h4");
+        dom.setAttribute(el6,"class","schedule-item__subtitle");
+        var el7 = dom.createTextNode("Інтерв’ю");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("h3");
+        dom.setAttribute(el6,"class","schedule-item__title");
+        var el7 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("a");
+        dom.setAttribute(el6,"class","schedule-item__g-calendar");
+        dom.setAttribute(el6,"target","_blank");
+        dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
+        var el7 = dom.createTextNode("sadfasdf");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n        ");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"class","schedule-item");
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("div");
+        dom.setAttribute(el6,"class","schedule-timer");
+        var el7 = dom.createTextNode("12:40");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("h4");
+        dom.setAttribute(el6,"class","schedule-item__subtitle");
+        var el7 = dom.createTextNode("Інтерв’ю");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("h3");
+        dom.setAttribute(el6,"class","schedule-item__title");
+        var el7 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n          ");
+        dom.appendChild(el5, el6);
+        var el6 = dom.createElement("a");
+        dom.setAttribute(el6,"class","schedule-item__g-calendar");
+        dom.setAttribute(el6,"target","_blank");
+        dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
+        var el7 = dom.createTextNode("sadfasdf");
+        dom.appendChild(el6, el7);
+        dom.appendChild(el5, el6);
+        var el6 = dom.createTextNode("\n        ");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n\n      ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n    ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n  ");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n");
+        var el1 = dom.createTextNode("\n\n\n\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1,"class","big-fake");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
@@ -1291,15 +1597,19 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var morphs = new Array(2);
+        var morphs = new Array(4);
         morphs[0] = dom.createMorphAt(fragment,0,0,contextualElement);
-        morphs[1] = dom.createMorphAt(fragment,7,7,contextualElement);
+        morphs[1] = dom.createMorphAt(dom.childAt(fragment, [2, 1]),11,11);
+        morphs[2] = dom.createMorphAt(fragment,4,4,contextualElement);
+        morphs[3] = dom.createMorphAt(fragment,6,6,contextualElement);
         dom.insertBoundary(fragment, 0);
         return morphs;
       },
       statements: [
         ["content","main-block",["loc",[null,[1,0],[1,14]]]],
-        ["content","outlet",["loc",[null,[41,0],[41,10]]]]
+        ["content","x-chat",["loc",[null,[65,4],[65,14]]]],
+        ["inline","main-footer",[],["class","main-footer"],["loc",[null,[72,0],[72,35]]]],
+        ["content","outlet",["loc",[null,[74,0],[74,10]]]]
       ],
       locals: [],
       templates: []
@@ -1381,6 +1691,16 @@ define('urban-radio/tests/components/main-block.jshint', function () {
   QUnit.module('JSHint - components');
   QUnit.test('components/main-block.js should pass jshint', function(assert) { 
     assert.ok(false, 'components/main-block.js should pass jshint.\ncomponents/main-block.js: line 21, col 25, \'YT\' is not defined.\n\n1 error'); 
+  });
+
+});
+define('urban-radio/tests/components/main-footer.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - components');
+  QUnit.test('components/main-footer.js should pass jshint', function(assert) { 
+    assert.ok(true, 'components/main-footer.js should pass jshint.'); 
   });
 
 });
@@ -1564,6 +1884,149 @@ define('urban-radio/tests/integration/components/main-block-test.jshint', functi
   QUnit.module('JSHint - integration/components');
   QUnit.test('integration/components/main-block-test.js should pass jshint', function(assert) { 
     assert.ok(true, 'integration/components/main-block-test.js should pass jshint.'); 
+  });
+
+});
+define('urban-radio/tests/integration/components/main-footer-test', ['ember-qunit'], function (ember_qunit) {
+
+  'use strict';
+
+  ember_qunit.moduleForComponent('main-footer', 'Integration | Component | main footer', {
+    integration: true
+  });
+
+  ember_qunit.test('it renders', function (assert) {
+    assert.expect(2);
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template((function () {
+      return {
+        meta: {
+          'revision': 'Ember@1.13.10',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 1,
+              'column': 15
+            }
+          }
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [['content', 'main-footer', ['loc', [null, [1, 0], [1, 15]]]]],
+        locals: [],
+        templates: []
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template((function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            'revision': 'Ember@1.13.10',
+            'loc': {
+              'source': null,
+              'start': {
+                'line': 2,
+                'column': 4
+              },
+              'end': {
+                'line': 4,
+                'column': 4
+              }
+            }
+          },
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode('      template block text\n');
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+
+      return {
+        meta: {
+          'revision': 'Ember@1.13.10',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 5,
+              'column': 2
+            }
+          }
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode('\n');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode('  ');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [['block', 'main-footer', [], [], 0, null, ['loc', [null, [2, 4], [4, 20]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+
+});
+define('urban-radio/tests/integration/components/main-footer-test.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - integration/components');
+  QUnit.test('integration/components/main-footer-test.js should pass jshint', function(assert) { 
+    assert.ok(true, 'integration/components/main-footer-test.js should pass jshint.'); 
   });
 
 });
@@ -1953,7 +2416,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+8676efad"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+248df4f1"});
 }
 
 /* jshint ignore:end */
