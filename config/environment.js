@@ -10,7 +10,7 @@ module.exports = function(environment) {
       'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
       'frame-src': "'self' https://www.youtube.com",
       'script-src': "'self' https://www.youtube.com https://s.ytimg.com",
-      'media-src': "'self' https://cf-media.sndcdn.com"
+      'media-src': "'self' http://77.120.120.154:8000"
     },
     firebase: 'https://urban-radio.firebaseio.com/',
     baseURL: false,

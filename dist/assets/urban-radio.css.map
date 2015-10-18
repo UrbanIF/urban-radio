@@ -2,12 +2,12 @@
 	"version": 3,
 	"file": "urban-radio.css",
 	"sources": [
-		"../../sass_compiler-input_base_path-88xbEe0k.tmp/0/app/styles/app.scss",
-		"../../sass_compiler-input_base_path-88xbEe0k.tmp/0/app/styles/components/_x-player.scss",
-		"../../sass_compiler-input_base_path-88xbEe0k.tmp/0/app/styles/components/_x-chat.scss",
-		"../../sass_compiler-input_base_path-88xbEe0k.tmp/0/app/styles/components/_announcments.scss",
-		"../../sass_compiler-input_base_path-88xbEe0k.tmp/0/app/styles/components/_main.scss",
-		"../../sass_compiler-input_base_path-88xbEe0k.tmp/0/app/styles/components/_main-footer.scss"
+		"../../sass_compiler-input_base_path-JIABB1Xh.tmp/0/app/styles/app.scss",
+		"../../sass_compiler-input_base_path-JIABB1Xh.tmp/0/app/styles/components/_x-player.scss",
+		"../../sass_compiler-input_base_path-JIABB1Xh.tmp/0/app/styles/components/_x-chat.scss",
+		"../../sass_compiler-input_base_path-JIABB1Xh.tmp/0/app/styles/components/_announcments.scss",
+		"../../sass_compiler-input_base_path-JIABB1Xh.tmp/0/app/styles/components/_main.scss",
+		"../../sass_compiler-input_base_path-JIABB1Xh.tmp/0/app/styles/components/_main-footer.scss"
 	],
 	"sourcesContent": [
 		"body {\n  font-family: \"Open Sans\", sans-serif;\n  font-size: 14px;\n  letter-spacing: normal;\n  line-height: 1.5em;\n}\n\nbutton {\n  border: none;\n}\n\n.clearfix:before,\n.clearfix:after {\n  content:\"\";\n  display:table;\n}\n.clearfix:after {\n  clear:both;\n}\n.clearfix {\n  zoom:1; /* For IE 6/7 (trigger hasLayout) */\n}\n\n.container {\n  max-width: 960px;\n  margin: 0 auto;\n  padding: 0 10px;\n}\n\n\n@import 'components/x-player';\n@import 'components/x-chat';\n@import 'components/announcments';\n@import 'components/main';\n@import 'components/main-footer';\n\n@media screen and (max-width: 960px) {\n  .announcment, .schedule, .x-chat {\n      width: 100%;\n  }\n\n  .main-video-control {\n    display: none;\n  }\n\n  .main-footer__rights {\n    margin: 25px 0 0 0;\n  }\n}\n",

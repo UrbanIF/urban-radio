@@ -1,7 +1,36 @@
-proffit!!!!!!!11111
+<header class='op-header'>
+  <div class='container clearfix'>
 
 
-<div class="announcment-bg" style={{model.bgStyle}}></div>
+  {{#link-to "home" class='op-header__link-back b13'}}Назад{{/link-to}}
+
+
+  <div class='op-header__logo b13'></div>
+
+  <div class='op-header__socials b13'>
+    <a class='f-fb' href='#' target='_blank'></a>
+    <a class='f-tw' href='#' target='_blank'></a>
+  </div>
+
+  </div>
+</header>
+
+<div class='container'>
+  <h1>{{model.name}}</h1>
+  <h2>{{model.category}}</h2>
+
+  <div>{{model.body}}</div>
+</div>
+
+
+
+        <div class="announcment-bg" style={{announcement.bgStyle}}></div>
+        <h4 class="ann__subtitle">{{announcement.category}}</h4>
+        <h3 class="ann__title">{{announcement.name}}</h3>
+        <date class="ann__time">{{announcement.formattedDate}}</date>
+
+
+{{!-- <div class="announcment-bg" style={{model.bgStyle}}></div>
 <h4 class="ann__subtitle">{{model.category}}</h4>
 <h3 class="ann__title">{{model.name}}</h3>
-<date class="ann__time">{{model.formattedDate}}</date>
+<date class="ann__time">{{model.formattedDate}}</date> --}}

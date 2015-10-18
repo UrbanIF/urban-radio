@@ -522,6 +522,40 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
   'use strict';
 
   exports['default'] = Ember.HTMLBars.template((function() {
+    var child0 = (function() {
+      return {
+        meta: {
+          "revision": "Ember@1.13.10",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 5,
+              "column": 2
+            },
+            "end": {
+              "line": 5,
+              "column": 59
+            }
+          },
+          "moduleName": "urban-radio/templates/announcement.hbs"
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("Назад");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes() { return []; },
+        statements: [
+
+        ],
+        locals: [],
+        templates: []
+      };
+    }());
     return {
       meta: {
         "revision": "Ember@1.13.10",
@@ -532,7 +566,7 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 8,
+            "line": 37,
             "column": 0
           }
         },
@@ -543,53 +577,129 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
       hasRendered: false,
       buildFragment: function buildFragment(dom) {
         var el0 = dom.createDocumentFragment();
-        var el1 = dom.createTextNode("proffit!!!!!!!11111\n\n\n");
+        var el1 = dom.createElement("header");
+        dom.setAttribute(el1,"class","op-header");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","container clearfix");
+        var el3 = dom.createTextNode("\n\n\n  ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n\n  ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","op-header__logo b13");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","op-header__socials b13");
+        var el4 = dom.createTextNode("\n    ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("a");
+        dom.setAttribute(el4,"class","f-fb");
+        dom.setAttribute(el4,"href","#");
+        dom.setAttribute(el4,"target","_blank");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n    ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("a");
+        dom.setAttribute(el4,"class","f-tw");
+        dom.setAttribute(el4,"href","#");
+        dom.setAttribute(el4,"target","_blank");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n  ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","container");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("h1");
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("h2");
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        var el3 = dom.createComment("");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n\n\n        ");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
         dom.setAttribute(el1,"class","announcment-bg");
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\n        ");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("h4");
         dom.setAttribute(el1,"class","ann__subtitle");
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\n        ");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("h3");
         dom.setAttribute(el1,"class","ann__title");
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\n        ");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("date");
         dom.setAttribute(el1,"class","ann__time");
         var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n");
+        var el1 = dom.createTextNode("\n\n\n");
         dom.appendChild(el0, el1);
         return el0;
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
-        var element0 = dom.childAt(fragment, [1]);
-        var morphs = new Array(4);
-        morphs[0] = dom.createAttrMorph(element0, 'style');
-        morphs[1] = dom.createMorphAt(dom.childAt(fragment, [3]),0,0);
-        morphs[2] = dom.createMorphAt(dom.childAt(fragment, [5]),0,0);
-        morphs[3] = dom.createMorphAt(dom.childAt(fragment, [7]),0,0);
+        var element0 = dom.childAt(fragment, [2]);
+        var element1 = dom.childAt(fragment, [4]);
+        var morphs = new Array(8);
+        morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0, 1]),1,1);
+        morphs[1] = dom.createMorphAt(dom.childAt(element0, [1]),0,0);
+        morphs[2] = dom.createMorphAt(dom.childAt(element0, [3]),0,0);
+        morphs[3] = dom.createMorphAt(dom.childAt(element0, [5]),0,0);
+        morphs[4] = dom.createAttrMorph(element1, 'style');
+        morphs[5] = dom.createMorphAt(dom.childAt(fragment, [6]),0,0);
+        morphs[6] = dom.createMorphAt(dom.childAt(fragment, [8]),0,0);
+        morphs[7] = dom.createMorphAt(dom.childAt(fragment, [10]),0,0);
         return morphs;
       },
       statements: [
-        ["attribute","style",["get","model.bgStyle",["loc",[null,[4,36],[4,49]]]]],
-        ["content","model.category",["loc",[null,[5,26],[5,44]]]],
-        ["content","model.name",["loc",[null,[6,23],[6,37]]]],
-        ["content","model.formattedDate",["loc",[null,[7,24],[7,47]]]]
+        ["block","link-to",["home"],["class","op-header__link-back b13"],0,null,["loc",[null,[5,2],[5,71]]]],
+        ["content","model.name",["loc",[null,[19,6],[19,20]]]],
+        ["content","model.category",["loc",[null,[20,6],[20,24]]]],
+        ["content","model.body",["loc",[null,[22,7],[22,21]]]],
+        ["attribute","style",["get","announcement.bgStyle",["loc",[null,[27,44],[27,64]]]]],
+        ["content","announcement.category",["loc",[null,[28,34],[28,59]]]],
+        ["content","announcement.name",["loc",[null,[29,31],[29,52]]]],
+        ["content","announcement.formattedDate",["loc",[null,[30,32],[30,62]]]]
       ],
       locals: [],
-      templates: []
+      templates: [child0]
     };
   }()));
 
@@ -1568,7 +1678,7 @@ define('urban-radio/templates/components/x-player', ['exports'], function (expor
         var el2 = dom.createTextNode("  ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("source");
-        dom.setAttribute(el2,"src","assets/onuka.mp3");
+        dom.setAttribute(el2,"src","http://77.120.120.154:8000/urban-space-radio");
         dom.setAttribute(el2,"type","audio/mpeg");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
@@ -2971,7 +3081,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+e063523f"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+edb8bdda"});
 }
 
 /* jshint ignore:end */
