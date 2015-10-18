@@ -139,7 +139,7 @@ define('urban-radio/components/x-chat', ['exports', 'ember'], function (exports,
       sendMessage: function sendMessage() {
         var message = this.store.createRecord('message', {
           userIcon: 'assets/x-chat-user-icon.png',
-          userName: 'Іван',
+          userName: 'Гість',
           body: this.get('messageBody')
         });
         message.save();
@@ -2416,7 +2416,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+f2cefb9a"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+e012ce43"});
 }
 
 /* jshint ignore:end */

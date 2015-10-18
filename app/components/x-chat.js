@@ -21,7 +21,7 @@ export default Ember.Component.extend({
     sendMessage() {
       let message = this.store.createRecord('message', {
         userIcon: 'assets/x-chat-user-icon.png',
-        userName: 'Іван',
+        userName: 'Гість',
         body: this.get('messageBody')
       });
       message.save();
