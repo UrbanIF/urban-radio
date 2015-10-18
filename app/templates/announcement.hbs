@@ -2,7 +2,10 @@
   <div class='container clearfix'>
 
 
-  {{#link-to "home" class='op-header__link-back b13'}}Назад{{/link-to}}
+  {{#link-to "home" class='op-header__link-back b13'}}
+    <span class="op-header__link-back-icon"></span>
+    Назад
+  {{/link-to}}
 
 
   <div class='op-header__logo b13'></div>
@@ -16,21 +19,43 @@
 </header>
 
 <div class='container'>
-  <h1>{{model.name}}</h1>
-  <h2>{{model.category}}</h2>
+  <h1 class="o-ann-h1">{{model.name}}</h1>
+  <h2 class="o-ann-h2">{{model.category}}</h2>
 
-  <div>{{model.body}}</div>
+  <div class="o-ann-text-wrap">
+    <div class="o-ann-text">{{{model.body}}}</div>
+
+    <div class="o-ann-qoutes">
+
+      <div class="o-ann-qoute">
+        <div class="o-ann-qoute-icon"><img src='assets/head-icon.jpg'></div>
+        <p>Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.</p>
+        <h4 class="o-ann-qoute-name">Анатолій Колорієв</h4>
+      </div>
+
+    </div>
+  </div>
+
 </div>
 
 
+<div class="post-sign">
+  <h2 class="post-sign__h">Підписатись на розсилку</h2>
 
-        <div class="announcment-bg" style={{announcement.bgStyle}}></div>
-        <h4 class="ann__subtitle">{{announcement.category}}</h4>
-        <h3 class="ann__title">{{announcement.name}}</h3>
-        <date class="ann__time">{{announcement.formattedDate}}</date>
+  <p class="post-sign__t">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium
+totam rem aperiam, eaque ipsa quae inventore</p>
+
+  <div class='post-sign__input-wrap'>
+    <input class='post-sign__input' type='text' />
+
+    <button class="post-sign__btn" >
+        <span class="post-sign__btn-ico"></span>
+        Підписатися
+    </button>
+
+  </div>
+</div>
+
+{{main-footer class='main-footer'}}
 
 
-{{!-- <div class="announcment-bg" style={{model.bgStyle}}></div>
-<h4 class="ann__subtitle">{{model.category}}</h4>
-<h3 class="ann__title">{{model.name}}</h3>
-<date class="ann__time">{{model.formattedDate}}</date> --}}

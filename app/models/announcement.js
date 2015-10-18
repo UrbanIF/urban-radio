@@ -5,6 +5,7 @@ export default DS.Model.extend({
   name: DS.attr('string'),
   date: DS.attr('date'),
   image: DS.attr('string'),
+  body: DS.attr('string'),
 
   bgStyle: Ember.computed('image', function() {
     return new Ember.Handlebars.SafeString("background-image: url('" + this.get('image') + "');");

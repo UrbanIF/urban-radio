@@ -9,7 +9,7 @@ module.exports = function(environment) {
       'font-src': "'self' data: fonts.gstatic.com ",
       'style-src': "'self' 'unsafe-inline' https://fonts.googleapis.com",
       'frame-src': "'self' https://www.youtube.com",
-      'script-src': "'self' https://www.youtube.com https://s.ytimg.com",
+      'script-src': "'self' https://www.youtube.com https://s.ytimg.com http://mjoy.ua",
       'media-src': "'self' http://77.120.120.154:8000"
     },
     firebase: 'https://urban-radio.firebaseio.com/',

@@ -400,6 +400,7 @@ define('urban-radio/models/announcement', ['exports', 'ember-data'], function (e
     name: DS['default'].attr('string'),
     date: DS['default'].attr('date'),
     image: DS['default'].attr('string'),
+    body: DS['default'].attr('string'),
 
     bgStyle: Ember.computed('image', function () {
       return new Ember.Handlebars.SafeString("background-image: url('" + this.get('image') + "');");
@@ -413,6 +414,13 @@ define('urban-radio/models/announcement', ['exports', 'ember-data'], function (e
 
 });
 define('urban-radio/models/calendar-event', ['exports', 'ember-data'], function (exports, DS) {
+
+	'use strict';
+
+	exports['default'] = DS['default'].Model.extend({});
+
+});
+define('urban-radio/models/email', ['exports', 'ember-data'], function (exports, DS) {
 
 	'use strict';
 
@@ -533,8 +541,8 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
               "column": 2
             },
             "end": {
-              "line": 5,
-              "column": 59
+              "line": 8,
+              "column": 2
             }
           },
           "moduleName": "urban-radio/templates/announcement.hbs"
@@ -544,7 +552,12 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
         hasRendered: false,
         buildFragment: function buildFragment(dom) {
           var el0 = dom.createDocumentFragment();
-          var el1 = dom.createTextNode("Назад");
+          var el1 = dom.createTextNode("    ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("span");
+          dom.setAttribute(el1,"class","op-header__link-back-icon");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n    Назад\n");
           dom.appendChild(el0, el1);
           return el0;
         },
@@ -566,7 +579,7 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 37,
+            "line": 62,
             "column": 0
           }
         },
@@ -583,11 +596,11 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
         dom.setAttribute(el2,"class","container clearfix");
-        var el3 = dom.createTextNode("\n\n\n  ");
+        var el3 = dom.createTextNode("\n\n\n");
         dom.appendChild(el2, el3);
         var el3 = dom.createComment("");
         dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n\n\n  ");
+        var el3 = dom.createTextNode("\n\n  ");
         dom.appendChild(el2, el3);
         var el3 = dom.createElement("div");
         dom.setAttribute(el3,"class","op-header__logo b13");
@@ -626,49 +639,118 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
         var el2 = dom.createTextNode("\n  ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("h1");
+        dom.setAttribute(el2,"class","o-ann-h1");
         var el3 = dom.createComment("");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n  ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("h2");
+        dom.setAttribute(el2,"class","o-ann-h2");
         var el3 = dom.createComment("");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n\n  ");
         dom.appendChild(el1, el2);
         var el2 = dom.createElement("div");
-        var el3 = dom.createComment("");
+        dom.setAttribute(el2,"class","o-ann-text-wrap");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","o-ann-text");
+        var el4 = dom.createComment("");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","o-ann-qoutes");
+        var el4 = dom.createTextNode("\n\n      ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("div");
+        dom.setAttribute(el4,"class","o-ann-qoute");
+        var el5 = dom.createTextNode("\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("div");
+        dom.setAttribute(el5,"class","o-ann-qoute-icon");
+        var el6 = dom.createElement("img");
+        dom.setAttribute(el6,"src","assets/head-icon.jpg");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("p");
+        var el6 = dom.createTextNode("Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident.");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n        ");
+        dom.appendChild(el4, el5);
+        var el5 = dom.createElement("h4");
+        dom.setAttribute(el5,"class","o-ann-qoute-name");
+        var el6 = dom.createTextNode("Анатолій Колорієв");
+        dom.appendChild(el5, el6);
+        dom.appendChild(el4, el5);
+        var el5 = dom.createTextNode("\n      ");
+        dom.appendChild(el4, el5);
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n\n    ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","post-sign");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("h2");
+        dom.setAttribute(el2,"class","post-sign__h");
+        var el3 = dom.createTextNode("Підписатись на розсилку");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("p");
+        dom.setAttribute(el2,"class","post-sign__t");
+        var el3 = dom.createTextNode("Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium\ntotam rem aperiam, eaque ipsa quae inventore");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","post-sign__input-wrap");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("input");
+        dom.setAttribute(el3,"class","post-sign__input");
+        dom.setAttribute(el3,"type","text");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("button");
+        dom.setAttribute(el3,"class","post-sign__btn");
+        var el4 = dom.createTextNode("\n        ");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createElement("span");
+        dom.setAttribute(el4,"class","post-sign__btn-ico");
+        dom.appendChild(el3, el4);
+        var el4 = dom.createTextNode("\n        Підписатися\n    ");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n\n  ");
         dom.appendChild(el2, el3);
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n\n\n        ");
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
-        var el1 = dom.createElement("div");
-        dom.setAttribute(el1,"class","announcment-bg");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n        ");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("h4");
-        dom.setAttribute(el1,"class","ann__subtitle");
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n        ");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("h3");
-        dom.setAttribute(el1,"class","ann__title");
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
-        dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n        ");
-        dom.appendChild(el0, el1);
-        var el1 = dom.createElement("date");
-        dom.setAttribute(el1,"class","ann__time");
-        var el2 = dom.createComment("");
-        dom.appendChild(el1, el2);
+        var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
         var el1 = dom.createTextNode("\n\n\n");
         dom.appendChild(el0, el1);
@@ -676,27 +758,20 @@ define('urban-radio/templates/announcement', ['exports'], function (exports) {
       },
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var element0 = dom.childAt(fragment, [2]);
-        var element1 = dom.childAt(fragment, [4]);
-        var morphs = new Array(8);
+        var morphs = new Array(5);
         morphs[0] = dom.createMorphAt(dom.childAt(fragment, [0, 1]),1,1);
         morphs[1] = dom.createMorphAt(dom.childAt(element0, [1]),0,0);
         morphs[2] = dom.createMorphAt(dom.childAt(element0, [3]),0,0);
-        morphs[3] = dom.createMorphAt(dom.childAt(element0, [5]),0,0);
-        morphs[4] = dom.createAttrMorph(element1, 'style');
-        morphs[5] = dom.createMorphAt(dom.childAt(fragment, [6]),0,0);
-        morphs[6] = dom.createMorphAt(dom.childAt(fragment, [8]),0,0);
-        morphs[7] = dom.createMorphAt(dom.childAt(fragment, [10]),0,0);
+        morphs[3] = dom.createUnsafeMorphAt(dom.childAt(element0, [5, 1]),0,0);
+        morphs[4] = dom.createMorphAt(fragment,6,6,contextualElement);
         return morphs;
       },
       statements: [
-        ["block","link-to",["home"],["class","op-header__link-back b13"],0,null,["loc",[null,[5,2],[5,71]]]],
-        ["content","model.name",["loc",[null,[19,6],[19,20]]]],
-        ["content","model.category",["loc",[null,[20,6],[20,24]]]],
-        ["content","model.body",["loc",[null,[22,7],[22,21]]]],
-        ["attribute","style",["get","announcement.bgStyle",["loc",[null,[27,44],[27,64]]]]],
-        ["content","announcement.category",["loc",[null,[28,34],[28,59]]]],
-        ["content","announcement.name",["loc",[null,[29,31],[29,52]]]],
-        ["content","announcement.formattedDate",["loc",[null,[30,32],[30,62]]]]
+        ["block","link-to",["home"],["class","op-header__link-back b13"],0,null,["loc",[null,[5,2],[8,14]]]],
+        ["content","model.name",["loc",[null,[22,23],[22,37]]]],
+        ["content","model.category",["loc",[null,[23,23],[23,41]]]],
+        ["content","model.body",["loc",[null,[26,28],[26,44]]]],
+        ["inline","main-footer",[],["class","main-footer"],["loc",[null,[59,0],[59,35]]]]
       ],
       locals: [],
       templates: [child0]
@@ -1525,7 +1600,7 @@ define('urban-radio/templates/components/x-chat', ['exports'], function (exports
         var el5 = dom.createElement("span");
         dom.setAttribute(el5,"class","x-chat-bot-btn-icon");
         dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        Опоблікувати\n      ");
+        var el5 = dom.createTextNode("\n        Опублікувати\n      ");
         dom.appendChild(el4, el5);
         dom.appendChild(el3, el4);
         var el4 = dom.createTextNode("\n    ");
@@ -2880,7 +2955,7 @@ define('urban-radio/tests/models/announcement.jshint', function () {
 
   QUnit.module('JSHint - models');
   QUnit.test('models/announcement.js should pass jshint', function(assert) { 
-    assert.ok(false, 'models/announcement.js should pass jshint.\nmodels/announcement.js: line 9, col 12, \'Ember\' is not defined.\nmodels/announcement.js: line 10, col 16, \'Ember\' is not defined.\nmodels/announcement.js: line 13, col 18, \'Ember\' is not defined.\nmodels/announcement.js: line 14, col 12, \'moment\' is not defined.\n\n4 errors'); 
+    assert.ok(false, 'models/announcement.js should pass jshint.\nmodels/announcement.js: line 10, col 12, \'Ember\' is not defined.\nmodels/announcement.js: line 11, col 16, \'Ember\' is not defined.\nmodels/announcement.js: line 14, col 18, \'Ember\' is not defined.\nmodels/announcement.js: line 15, col 12, \'moment\' is not defined.\n\n4 errors'); 
   });
 
 });
@@ -2891,6 +2966,16 @@ define('urban-radio/tests/models/calendar-event.jshint', function () {
   QUnit.module('JSHint - models');
   QUnit.test('models/calendar-event.js should pass jshint', function(assert) { 
     assert.ok(true, 'models/calendar-event.js should pass jshint.'); 
+  });
+
+});
+define('urban-radio/tests/models/email.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - models');
+  QUnit.test('models/email.js should pass jshint', function(assert) { 
+    assert.ok(true, 'models/email.js should pass jshint.'); 
   });
 
 });
@@ -2996,6 +3081,32 @@ define('urban-radio/tests/unit/models/calendar-event-test.jshint', function () {
   });
 
 });
+define('urban-radio/tests/unit/models/email-test', ['ember-qunit'], function (ember_qunit) {
+
+  'use strict';
+
+  ember_qunit.moduleForModel('email', 'Unit | Model | email', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  ember_qunit.test('it exists', function (assert) {
+    var model = this.subject();
+    // var store = this.store();
+    assert.ok(!!model);
+  });
+
+});
+define('urban-radio/tests/unit/models/email-test.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - unit/models');
+  QUnit.test('unit/models/email-test.js should pass jshint', function(assert) { 
+    assert.ok(true, 'unit/models/email-test.js should pass jshint.'); 
+  });
+
+});
 define('urban-radio/tests/unit/routes/announcement-test', ['ember-qunit'], function (ember_qunit) {
 
   'use strict';
@@ -3081,7 +3192,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+edb8bdda"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+1ee4f00c"});
 }
 
 /* jshint ignore:end */

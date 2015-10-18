@@ -3,6 +3,7 @@ body {
   font-size: 14px;
   letter-spacing: normal;
   line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
 }
 
 button {
@@ -33,6 +34,9 @@ button {
 @import 'components/announcments';
 @import 'components/main';
 @import 'components/main-footer';
+@import 'components/announcement';
+@import 'components/post-sign';
+
 
 @media screen and (max-width: 960px) {
   .announcment, .schedule, .x-chat {
