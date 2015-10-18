@@ -47,6 +47,29 @@ define('urban-radio/components/app-version', ['exports', 'ember-cli-app-version/
   });
 
 });
+define('urban-radio/components/calendar-events', ['exports', 'ember'], function (exports, Ember) {
+
+  'use strict';
+
+  exports['default'] = Ember['default'].Component.extend({
+
+    classNames: ['schedule'],
+
+    calendarEvents: [],
+
+    loadCalendarEvents: function loadCalendarEvents() {
+      this.set('calendarEvents', this.store.find('calendarEvent', {
+        limitToLast: 3
+      }));
+    },
+
+    didInsertElement: function didInsertElement() {
+      Ember['default'].run.scheduleOnce('afterRender', this, 'loadCalendarEvents');
+    }
+
+  });
+
+});
 define('urban-radio/components/main-block', ['exports', 'ember'], function (exports, Ember) {
 
   'use strict';
@@ -74,7 +97,7 @@ define('urban-radio/components/main-block', ['exports', 'ember'], function (expo
           height: 720,
           playerVars: {
             'autoplay': 1,
-            'controls': 0,
+            'controls': 1,
             'autohide': 1,
             'rel': 0,
             'showinfo': 0,
@@ -112,6 +135,28 @@ define('urban-radio/components/main-footer', ['exports', 'ember'], function (exp
 	'use strict';
 
 	exports['default'] = Ember['default'].Component.extend({});
+
+});
+define('urban-radio/components/x-announcments', ['exports', 'ember'], function (exports, Ember) {
+
+  'use strict';
+
+  exports['default'] = Ember['default'].Component.extend({
+    classNames: ['announcments', 'clearfix'],
+
+    announcements: [],
+
+    loadAnnouncmentss: function loadAnnouncmentss() {
+      this.set('announcements', this.store.find('announcement', {
+        limitToLast: 3
+      }));
+    },
+
+    didInsertElement: function didInsertElement() {
+      Ember['default'].run.scheduleOnce('afterRender', this, 'loadAnnouncmentss');
+    }
+
+  });
 
 });
 define('urban-radio/components/x-chat', ['exports', 'ember'], function (exports, Ember) {
@@ -346,6 +391,34 @@ define('urban-radio/initializers/export-application-global', ['exports', 'ember'
   };
 
 });
+define('urban-radio/models/announcement', ['exports', 'ember-data'], function (exports, DS) {
+
+  'use strict';
+
+  exports['default'] = DS['default'].Model.extend({
+    category: DS['default'].attr('string'),
+    name: DS['default'].attr('string'),
+    date: DS['default'].attr('date'),
+    image: DS['default'].attr('string'),
+
+    bgStyle: Ember.computed('image', function () {
+      return new Ember.Handlebars.SafeString("background-image: url('" + this.get('image') + "');");
+    }),
+
+    formattedDate: Ember.computed('image', function () {
+      return moment(this.get('date')).format('D MMMM о h:mm');
+    })
+
+  });
+
+});
+define('urban-radio/models/calendar-event', ['exports', 'ember-data'], function (exports, DS) {
+
+	'use strict';
+
+	exports['default'] = DS['default'].Model.extend({});
+
+});
 define('urban-radio/models/message', ['exports', 'ember-data'], function (exports, DS) {
 
   'use strict';
@@ -368,9 +441,21 @@ define('urban-radio/router', ['exports', 'ember', 'urban-radio/config/environmen
   Router.map(function () {
     this.route('home', { path: '/' });
     this.route('player', {});
+    this.route('announcement', { path: '/announcement/:announcement_id' });
   });
 
   exports['default'] = Router;
+
+});
+define('urban-radio/routes/announcement', ['exports', 'ember'], function (exports, Ember) {
+
+  'use strict';
+
+  exports['default'] = Ember['default'].Route.extend({
+    model: function model(params) {
+      return this.store.findRecord('announcement', params.announcement_id);
+    }
+  });
 
 });
 define('urban-radio/routes/home', ['exports', 'ember'], function (exports, Ember) {
@@ -432,6 +517,83 @@ define('urban-radio/services/firebase', ['exports', 'emberfire/services/firebase
 	exports['default'] = Firebase['default'];
 
 });
+define('urban-radio/templates/announcement', ['exports'], function (exports) {
+
+  'use strict';
+
+  exports['default'] = Ember.HTMLBars.template((function() {
+    return {
+      meta: {
+        "revision": "Ember@1.13.10",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 8,
+            "column": 0
+          }
+        },
+        "moduleName": "urban-radio/templates/announcement.hbs"
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createTextNode("proffit!!!!!!!11111\n\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","announcment-bg");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("h4");
+        dom.setAttribute(el1,"class","ann__subtitle");
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("h3");
+        dom.setAttribute(el1,"class","ann__title");
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("date");
+        dom.setAttribute(el1,"class","ann__time");
+        var el2 = dom.createComment("");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var element0 = dom.childAt(fragment, [1]);
+        var morphs = new Array(4);
+        morphs[0] = dom.createAttrMorph(element0, 'style');
+        morphs[1] = dom.createMorphAt(dom.childAt(fragment, [3]),0,0);
+        morphs[2] = dom.createMorphAt(dom.childAt(fragment, [5]),0,0);
+        morphs[3] = dom.createMorphAt(dom.childAt(fragment, [7]),0,0);
+        return morphs;
+      },
+      statements: [
+        ["attribute","style",["get","model.bgStyle",["loc",[null,[4,36],[4,49]]]]],
+        ["content","model.category",["loc",[null,[5,26],[5,44]]]],
+        ["content","model.name",["loc",[null,[6,23],[6,37]]]],
+        ["content","model.formattedDate",["loc",[null,[7,24],[7,47]]]]
+      ],
+      locals: [],
+      templates: []
+    };
+  }()));
+
+});
 define('urban-radio/templates/application', ['exports'], function (exports) {
 
   'use strict';
@@ -472,6 +634,169 @@ define('urban-radio/templates/application', ['exports'], function (exports) {
       },
       statements: [
         ["content","outlet",["loc",[null,[1,0],[1,10]]]]
+      ],
+      locals: [],
+      templates: []
+    };
+  }()));
+
+});
+define('urban-radio/templates/components/calendar-events', ['exports'], function (exports) {
+
+  'use strict';
+
+  exports['default'] = Ember.HTMLBars.template((function() {
+    return {
+      meta: {
+        "revision": "Ember@1.13.10",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 27,
+            "column": 0
+          }
+        },
+        "moduleName": "urban-radio/templates/components/calendar-events.hbs"
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createElement("div");
+        dom.setAttribute(el1,"class","schedule-inner");
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("h2");
+        dom.setAttribute(el2,"class","schedule-main-title");
+        var el3 = dom.createTextNode("Сьогодні в ефірі");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","schedule-item");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","schedule-timer");
+        var el4 = dom.createTextNode("12:40");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h4");
+        dom.setAttribute(el3,"class","schedule-item__subtitle");
+        var el4 = dom.createTextNode("Інтерв’ю");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h3");
+        dom.setAttribute(el3,"class","schedule-item__title");
+        var el4 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("a");
+        dom.setAttribute(el3,"class","schedule-item__g-calendar");
+        dom.setAttribute(el3,"target","_blank");
+        dom.setAttribute(el3,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
+        var el4 = dom.createTextNode("додати в календар");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","schedule-item");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","schedule-timer");
+        var el4 = dom.createTextNode("12:40");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h4");
+        dom.setAttribute(el3,"class","schedule-item__subtitle");
+        var el4 = dom.createTextNode("Інтерв’ю");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h3");
+        dom.setAttribute(el3,"class","schedule-item__title");
+        var el4 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("a");
+        dom.setAttribute(el3,"class","schedule-item__g-calendar");
+        dom.setAttribute(el3,"target","_blank");
+        dom.setAttribute(el3,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
+        var el4 = dom.createTextNode("додати в календар");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","schedule-item");
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("div");
+        dom.setAttribute(el3,"class","schedule-timer");
+        var el4 = dom.createTextNode("12:40");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h4");
+        dom.setAttribute(el3,"class","schedule-item__subtitle");
+        var el4 = dom.createTextNode("Інтерв’ю");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("h3");
+        dom.setAttribute(el3,"class","schedule-item__title");
+        var el4 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n    ");
+        dom.appendChild(el2, el3);
+        var el3 = dom.createElement("a");
+        dom.setAttribute(el3,"class","schedule-item__g-calendar");
+        dom.setAttribute(el3,"target","_blank");
+        dom.setAttribute(el3,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
+        var el4 = dom.createTextNode("додати в календар");
+        dom.appendChild(el3, el4);
+        dom.appendChild(el2, el3);
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes() { return []; },
+      statements: [
+
       ],
       locals: [],
       templates: []
@@ -723,6 +1048,206 @@ define('urban-radio/templates/components/main-footer', ['exports'], function (ex
       ],
       locals: [],
       templates: []
+    };
+  }()));
+
+});
+define('urban-radio/templates/components/x-announcments', ['exports'], function (exports) {
+
+  'use strict';
+
+  exports['default'] = Ember.HTMLBars.template((function() {
+    var child0 = (function() {
+      var child0 = (function() {
+        return {
+          meta: {
+            "revision": "Ember@1.13.10",
+            "loc": {
+              "source": null,
+              "start": {
+                "line": 4,
+                "column": 6
+              },
+              "end": {
+                "line": 9,
+                "column": 6
+              }
+            },
+            "moduleName": "urban-radio/templates/components/x-announcments.hbs"
+          },
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode("        ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("div");
+            dom.setAttribute(el1,"class","announcment-bg");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n        ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("h4");
+            dom.setAttribute(el1,"class","ann__subtitle");
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n        ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("h3");
+            dom.setAttribute(el1,"class","ann__title");
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n        ");
+            dom.appendChild(el0, el1);
+            var el1 = dom.createElement("date");
+            dom.setAttribute(el1,"class","ann__time");
+            var el2 = dom.createComment("");
+            dom.appendChild(el1, el2);
+            dom.appendChild(el0, el1);
+            var el1 = dom.createTextNode("\n");
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+            var element0 = dom.childAt(fragment, [1]);
+            var morphs = new Array(4);
+            morphs[0] = dom.createAttrMorph(element0, 'style');
+            morphs[1] = dom.createMorphAt(dom.childAt(fragment, [3]),0,0);
+            morphs[2] = dom.createMorphAt(dom.childAt(fragment, [5]),0,0);
+            morphs[3] = dom.createMorphAt(dom.childAt(fragment, [7]),0,0);
+            return morphs;
+          },
+          statements: [
+            ["attribute","style",["get","announcement.bgStyle",["loc",[null,[5,44],[5,64]]]]],
+            ["content","announcement.category",["loc",[null,[6,34],[6,59]]]],
+            ["content","announcement.name",["loc",[null,[7,31],[7,52]]]],
+            ["content","announcement.formattedDate",["loc",[null,[8,32],[8,62]]]]
+          ],
+          locals: [],
+          templates: []
+        };
+      }());
+      return {
+        meta: {
+          "revision": "Ember@1.13.10",
+          "loc": {
+            "source": null,
+            "start": {
+              "line": 1,
+              "column": 0
+            },
+            "end": {
+              "line": 12,
+              "column": 0
+            }
+          },
+          "moduleName": "urban-radio/templates/components/x-announcments.hbs"
+        },
+        arity: 1,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode("  ");
+          dom.appendChild(el0, el1);
+          var el1 = dom.createElement("section");
+          dom.setAttribute(el1,"class","announcment");
+          var el2 = dom.createTextNode("\n    ");
+          dom.appendChild(el1, el2);
+          var el2 = dom.createElement("div");
+          dom.setAttribute(el2,"class","announcment-inner");
+          var el3 = dom.createTextNode("\n");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createComment("");
+          dom.appendChild(el2, el3);
+          var el3 = dom.createTextNode("    ");
+          dom.appendChild(el2, el3);
+          dom.appendChild(el1, el2);
+          var el2 = dom.createTextNode("\n  ");
+          dom.appendChild(el1, el2);
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode("\n");
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(dom.childAt(fragment, [1, 1]),1,1);
+          return morphs;
+        },
+        statements: [
+          ["block","link-to",["announcement",["get","announcement",["loc",[null,[4,32],[4,44]]]]],[],0,null,["loc",[null,[4,6],[9,18]]]]
+        ],
+        locals: ["announcement"],
+        templates: [child0]
+      };
+    }());
+    return {
+      meta: {
+        "revision": "Ember@1.13.10",
+        "loc": {
+          "source": null,
+          "start": {
+            "line": 1,
+            "column": 0
+          },
+          "end": {
+            "line": 24,
+            "column": 0
+          }
+        },
+        "moduleName": "urban-radio/templates/components/x-announcments.hbs"
+      },
+      arity: 0,
+      cachedFragment: null,
+      hasRendered: false,
+      buildFragment: function buildFragment(dom) {
+        var el0 = dom.createDocumentFragment();
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createElement("section");
+        dom.setAttribute(el1,"class","announcment");
+        var el2 = dom.createTextNode("\n  ");
+        dom.appendChild(el1, el2);
+        var el2 = dom.createElement("div");
+        dom.setAttribute(el2,"class","announcment-inner ann-fake");
+        var el3 = dom.createTextNode("\n  ");
+        dom.appendChild(el2, el3);
+        dom.appendChild(el1, el2);
+        var el2 = dom.createTextNode("\n");
+        dom.appendChild(el1, el2);
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n\n");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createComment("");
+        dom.appendChild(el0, el1);
+        var el1 = dom.createTextNode("\n");
+        dom.appendChild(el0, el1);
+        return el0;
+      },
+      buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+        var morphs = new Array(3);
+        morphs[0] = dom.createMorphAt(fragment,0,0,contextualElement);
+        morphs[1] = dom.createMorphAt(fragment,4,4,contextualElement);
+        morphs[2] = dom.createMorphAt(fragment,6,6,contextualElement);
+        dom.insertBoundary(fragment, 0);
+        return morphs;
+      },
+      statements: [
+        ["block","each",[["get","announcements",["loc",[null,[1,8],[1,21]]]]],[],0,null,["loc",[null,[1,0],[12,9]]]],
+        ["content","calendar-events",["loc",[null,[21,0],[21,19]]]],
+        ["content","x-chat",["loc",[null,[23,0],[23,10]]]]
+      ],
+      locals: [],
+      templates: [child0]
     };
   }()));
 
@@ -1284,7 +1809,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
             "column": 0
           },
           "end": {
-            "line": 75,
+            "line": 10,
             "column": 0
           }
         },
@@ -1297,294 +1822,18 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
         var el0 = dom.createDocumentFragment();
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n\n");
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createElement("div");
         dom.setAttribute(el1,"class","container");
         var el2 = dom.createTextNode("\n  ");
         dom.appendChild(el1, el2);
-        var el2 = dom.createElement("div");
-        dom.setAttribute(el2,"class","announcments clearfix");
-        var el3 = dom.createTextNode("\n    ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("section");
-        dom.setAttribute(el3,"class","announcment");
-        var el4 = dom.createTextNode("\n      ");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4,"class","announcment-inner");
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("div");
-        dom.setAttribute(el5,"class","announcment-bg");
-        dom.setAttribute(el5,"style","background-image: url('assets/article1.jpg');");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("h4");
-        dom.setAttribute(el5,"class","ann__subtitle");
-        var el6 = dom.createTextNode("Анонс");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("h3");
-        dom.setAttribute(el5,"class","ann__title");
-        var el6 = dom.createTextNode("Зустріч з архітектором");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("date");
-        dom.setAttribute(el5,"class","ann__time");
-        var el6 = dom.createTextNode("18 жовтня о 12:00");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n      ");
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n    ");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n    ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("section");
-        dom.setAttribute(el3,"class","announcment");
-        var el4 = dom.createTextNode("\n      ");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4,"class","announcment-inner");
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("div");
-        dom.setAttribute(el5,"class","announcment-bg");
-        dom.setAttribute(el5,"style","background-image: url('assets/article2.jpg');");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("h4");
-        dom.setAttribute(el5,"class","ann__subtitle");
-        var el6 = dom.createTextNode("Програма");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("h3");
-        dom.setAttribute(el5,"class","ann__title");
-        var el6 = dom.createTextNode("Розповідь про себе");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("date");
-        dom.setAttribute(el5,"class","ann__time");
-        var el6 = dom.createTextNode("18 жовтня о 16:00");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n      ");
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n    ");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n    ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("section");
-        dom.setAttribute(el3,"class","announcment");
-        var el4 = dom.createTextNode("\n      ");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4,"class","announcment-inner");
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("div");
-        dom.setAttribute(el5,"class","announcment-bg");
-        dom.setAttribute(el5,"style","background-image: url('assets/article3.jpg');");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("h4");
-        dom.setAttribute(el5,"class","ann__subtitle");
-        var el6 = dom.createTextNode("Інтерв’ю");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("h3");
-        dom.setAttribute(el5,"class","ann__title");
-        var el6 = dom.createTextNode("Віктор Зотов");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("date");
-        dom.setAttribute(el5,"class","ann__time");
-        var el6 = dom.createTextNode("18 жовтня о 18:00");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n      ");
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n    ");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n    ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("section");
-        dom.setAttribute(el3,"class","announcment");
-        var el4 = dom.createTextNode("\n      ");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4,"class","announcment-inner ann-fake");
-        var el5 = dom.createTextNode("\n      ");
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n    ");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n\n\n    ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createElement("section");
-        dom.setAttribute(el3,"class","schedule");
-        var el4 = dom.createTextNode("\n      ");
-        dom.appendChild(el3, el4);
-        var el4 = dom.createElement("div");
-        dom.setAttribute(el4,"class","schedule-inner");
-        var el5 = dom.createTextNode("\n\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("h2");
-        dom.setAttribute(el5,"class","schedule-main-title");
-        var el6 = dom.createTextNode("Сьогодні в ефірі");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("div");
-        dom.setAttribute(el5,"class","schedule-item");
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("div");
-        dom.setAttribute(el6,"class","schedule-timer");
-        var el7 = dom.createTextNode("12:40");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("h4");
-        dom.setAttribute(el6,"class","schedule-item__subtitle");
-        var el7 = dom.createTextNode("Інтерв’ю");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("h3");
-        dom.setAttribute(el6,"class","schedule-item__title");
-        var el7 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("a");
-        dom.setAttribute(el6,"class","schedule-item__g-calendar");
-        dom.setAttribute(el6,"target","_blank");
-        dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
-        var el7 = dom.createTextNode("додати в календар");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n        ");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("div");
-        dom.setAttribute(el5,"class","schedule-item");
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("div");
-        dom.setAttribute(el6,"class","schedule-timer");
-        var el7 = dom.createTextNode("12:40");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("h4");
-        dom.setAttribute(el6,"class","schedule-item__subtitle");
-        var el7 = dom.createTextNode("Інтерв’ю");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("h3");
-        dom.setAttribute(el6,"class","schedule-item__title");
-        var el7 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("a");
-        dom.setAttribute(el6,"class","schedule-item__g-calendar");
-        dom.setAttribute(el6,"target","_blank");
-        dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
-        var el7 = dom.createTextNode("додати в календар");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n        ");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n\n        ");
-        dom.appendChild(el4, el5);
-        var el5 = dom.createElement("div");
-        dom.setAttribute(el5,"class","schedule-item");
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("div");
-        dom.setAttribute(el6,"class","schedule-timer");
-        var el7 = dom.createTextNode("12:40");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("h4");
-        dom.setAttribute(el6,"class","schedule-item__subtitle");
-        var el7 = dom.createTextNode("Інтерв’ю");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("h3");
-        dom.setAttribute(el6,"class","schedule-item__title");
-        var el7 = dom.createTextNode("Прямий ефір з урбаністом Павлом Дорошенком");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n          ");
-        dom.appendChild(el5, el6);
-        var el6 = dom.createElement("a");
-        dom.setAttribute(el6,"class","schedule-item__g-calendar");
-        dom.setAttribute(el6,"target","_blank");
-        dom.setAttribute(el6,"href","https://calendar.google.com/calendar/event?action=TEMPLATE&tmeid=bzExMnYxMTBxbW11N2cxZDRndnRtam81bmsgNTNkam02OGNhMHFwdWlwcjh0ZzRta2JvaWtAZw&tmsrc=53djm68ca0qpuipr8tg4mkboik%40group.calendar.google.com");
-        var el7 = dom.createTextNode("додати в календар");
-        dom.appendChild(el6, el7);
-        dom.appendChild(el5, el6);
-        var el6 = dom.createTextNode("\n        ");
-        dom.appendChild(el5, el6);
-        dom.appendChild(el4, el5);
-        var el5 = dom.createTextNode("\n\n      ");
-        dom.appendChild(el4, el5);
-        dom.appendChild(el3, el4);
-        var el4 = dom.createTextNode("\n    ");
-        dom.appendChild(el3, el4);
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n\n    ");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createComment("");
-        dom.appendChild(el2, el3);
-        var el3 = dom.createTextNode("\n\n  ");
-        dom.appendChild(el2, el3);
+        var el2 = dom.createComment("");
         dom.appendChild(el1, el2);
         var el2 = dom.createTextNode("\n");
         dom.appendChild(el1, el2);
         dom.appendChild(el0, el1);
-        var el1 = dom.createTextNode("\n\n\n\n");
+        var el1 = dom.createTextNode("\n\n");
         dom.appendChild(el0, el1);
         var el1 = dom.createComment("");
         dom.appendChild(el0, el1);
@@ -1599,7 +1848,7 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
       buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
         var morphs = new Array(4);
         morphs[0] = dom.createMorphAt(fragment,0,0,contextualElement);
-        morphs[1] = dom.createMorphAt(dom.childAt(fragment, [2, 1]),11,11);
+        morphs[1] = dom.createMorphAt(dom.childAt(fragment, [2]),1,1);
         morphs[2] = dom.createMorphAt(fragment,4,4,contextualElement);
         morphs[3] = dom.createMorphAt(fragment,6,6,contextualElement);
         dom.insertBoundary(fragment, 0);
@@ -1607,9 +1856,9 @@ define('urban-radio/templates/home', ['exports'], function (exports) {
       },
       statements: [
         ["content","main-block",["loc",[null,[1,0],[1,14]]]],
-        ["content","x-chat",["loc",[null,[65,4],[65,14]]]],
-        ["inline","main-footer",[],["class","main-footer"],["loc",[null,[72,0],[72,35]]]],
-        ["content","outlet",["loc",[null,[74,0],[74,10]]]]
+        ["content","x-announcments",["loc",[null,[4,2],[4,20]]]],
+        ["inline","main-footer",[],["class","main-footer"],["loc",[null,[7,0],[7,35]]]],
+        ["content","outlet",["loc",[null,[9,0],[9,10]]]]
       ],
       locals: [],
       templates: []
@@ -1684,6 +1933,16 @@ define('urban-radio/tests/app.jshint', function () {
   });
 
 });
+define('urban-radio/tests/components/calendar-events.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - components');
+  QUnit.test('components/calendar-events.js should pass jshint', function(assert) { 
+    assert.ok(true, 'components/calendar-events.js should pass jshint.'); 
+  });
+
+});
 define('urban-radio/tests/components/main-block.jshint', function () {
 
   'use strict';
@@ -1701,6 +1960,16 @@ define('urban-radio/tests/components/main-footer.jshint', function () {
   QUnit.module('JSHint - components');
   QUnit.test('components/main-footer.js should pass jshint', function(assert) { 
     assert.ok(true, 'components/main-footer.js should pass jshint.'); 
+  });
+
+});
+define('urban-radio/tests/components/x-announcments.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - components');
+  QUnit.test('components/x-announcments.js should pass jshint', function(assert) { 
+    assert.ok(true, 'components/x-announcments.js should pass jshint.'); 
   });
 
 });
@@ -1741,6 +2010,149 @@ define('urban-radio/tests/initializers/component-store-injector.jshint', functio
   QUnit.module('JSHint - initializers');
   QUnit.test('initializers/component-store-injector.js should pass jshint', function(assert) { 
     assert.ok(true, 'initializers/component-store-injector.js should pass jshint.'); 
+  });
+
+});
+define('urban-radio/tests/integration/components/calendar-events-test', ['ember-qunit'], function (ember_qunit) {
+
+  'use strict';
+
+  ember_qunit.moduleForComponent('calendar-events', 'Integration | Component | calendar events', {
+    integration: true
+  });
+
+  ember_qunit.test('it renders', function (assert) {
+    assert.expect(2);
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template((function () {
+      return {
+        meta: {
+          'revision': 'Ember@1.13.10',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 1,
+              'column': 19
+            }
+          }
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [['content', 'calendar-events', ['loc', [null, [1, 0], [1, 19]]]]],
+        locals: [],
+        templates: []
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template((function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            'revision': 'Ember@1.13.10',
+            'loc': {
+              'source': null,
+              'start': {
+                'line': 2,
+                'column': 4
+              },
+              'end': {
+                'line': 4,
+                'column': 4
+              }
+            }
+          },
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode('      template block text\n');
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+
+      return {
+        meta: {
+          'revision': 'Ember@1.13.10',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 5,
+              'column': 2
+            }
+          }
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode('\n');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode('  ');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [['block', 'calendar-events', [], [], 0, null, ['loc', [null, [2, 4], [4, 24]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+
+});
+define('urban-radio/tests/integration/components/calendar-events-test.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - integration/components');
+  QUnit.test('integration/components/calendar-events-test.js should pass jshint', function(assert) { 
+    assert.ok(true, 'integration/components/calendar-events-test.js should pass jshint.'); 
   });
 
 });
@@ -2030,6 +2442,149 @@ define('urban-radio/tests/integration/components/main-footer-test.jshint', funct
   });
 
 });
+define('urban-radio/tests/integration/components/x-announcments-test', ['ember-qunit'], function (ember_qunit) {
+
+  'use strict';
+
+  ember_qunit.moduleForComponent('x-announcments', 'Integration | Component | x announcments', {
+    integration: true
+  });
+
+  ember_qunit.test('it renders', function (assert) {
+    assert.expect(2);
+
+    // Set any properties with this.set('myProperty', 'value');
+    // Handle any actions with this.on('myAction', function(val) { ... });
+
+    this.render(Ember.HTMLBars.template((function () {
+      return {
+        meta: {
+          'revision': 'Ember@1.13.10',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 1,
+              'column': 18
+            }
+          }
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 0, 0, contextualElement);
+          dom.insertBoundary(fragment, 0);
+          dom.insertBoundary(fragment, null);
+          return morphs;
+        },
+        statements: [['content', 'x-announcments', ['loc', [null, [1, 0], [1, 18]]]]],
+        locals: [],
+        templates: []
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), '');
+
+    // Template block usage:
+    this.render(Ember.HTMLBars.template((function () {
+      var child0 = (function () {
+        return {
+          meta: {
+            'revision': 'Ember@1.13.10',
+            'loc': {
+              'source': null,
+              'start': {
+                'line': 2,
+                'column': 4
+              },
+              'end': {
+                'line': 4,
+                'column': 4
+              }
+            }
+          },
+          arity: 0,
+          cachedFragment: null,
+          hasRendered: false,
+          buildFragment: function buildFragment(dom) {
+            var el0 = dom.createDocumentFragment();
+            var el1 = dom.createTextNode('      template block text\n');
+            dom.appendChild(el0, el1);
+            return el0;
+          },
+          buildRenderNodes: function buildRenderNodes() {
+            return [];
+          },
+          statements: [],
+          locals: [],
+          templates: []
+        };
+      })();
+
+      return {
+        meta: {
+          'revision': 'Ember@1.13.10',
+          'loc': {
+            'source': null,
+            'start': {
+              'line': 1,
+              'column': 0
+            },
+            'end': {
+              'line': 5,
+              'column': 2
+            }
+          }
+        },
+        arity: 0,
+        cachedFragment: null,
+        hasRendered: false,
+        buildFragment: function buildFragment(dom) {
+          var el0 = dom.createDocumentFragment();
+          var el1 = dom.createTextNode('\n');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createComment('');
+          dom.appendChild(el0, el1);
+          var el1 = dom.createTextNode('  ');
+          dom.appendChild(el0, el1);
+          return el0;
+        },
+        buildRenderNodes: function buildRenderNodes(dom, fragment, contextualElement) {
+          var morphs = new Array(1);
+          morphs[0] = dom.createMorphAt(fragment, 1, 1, contextualElement);
+          return morphs;
+        },
+        statements: [['block', 'x-announcments', [], [], 0, null, ['loc', [null, [2, 4], [4, 23]]]]],
+        locals: [],
+        templates: [child0]
+      };
+    })()));
+
+    assert.equal(this.$().text().trim(), 'template block text');
+  });
+
+});
+define('urban-radio/tests/integration/components/x-announcments-test.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - integration/components');
+  QUnit.test('integration/components/x-announcments-test.js should pass jshint', function(assert) { 
+    assert.ok(true, 'integration/components/x-announcments-test.js should pass jshint.'); 
+  });
+
+});
 define('urban-radio/tests/integration/components/x-player-test', ['ember-qunit'], function (ember_qunit) {
 
   'use strict';
@@ -2316,6 +2871,26 @@ define('urban-radio/tests/integration/components/x-sound-slider-test.jshint', fu
   });
 
 });
+define('urban-radio/tests/models/announcement.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - models');
+  QUnit.test('models/announcement.js should pass jshint', function(assert) { 
+    assert.ok(false, 'models/announcement.js should pass jshint.\nmodels/announcement.js: line 9, col 12, \'Ember\' is not defined.\nmodels/announcement.js: line 10, col 16, \'Ember\' is not defined.\nmodels/announcement.js: line 13, col 18, \'Ember\' is not defined.\nmodels/announcement.js: line 14, col 12, \'moment\' is not defined.\n\n4 errors'); 
+  });
+
+});
+define('urban-radio/tests/models/calendar-event.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - models');
+  QUnit.test('models/calendar-event.js should pass jshint', function(assert) { 
+    assert.ok(true, 'models/calendar-event.js should pass jshint.'); 
+  });
+
+});
 define('urban-radio/tests/models/message.jshint', function () {
 
   'use strict';
@@ -2336,6 +2911,16 @@ define('urban-radio/tests/router.jshint', function () {
   });
 
 });
+define('urban-radio/tests/routes/announcement.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - routes');
+  QUnit.test('routes/announcement.js should pass jshint', function(assert) { 
+    assert.ok(true, 'routes/announcement.js should pass jshint.'); 
+  });
+
+});
 define('urban-radio/tests/routes/home.jshint', function () {
 
   'use strict';
@@ -2353,6 +2938,83 @@ define('urban-radio/tests/routes/player.jshint', function () {
   QUnit.module('JSHint - routes');
   QUnit.test('routes/player.js should pass jshint', function(assert) { 
     assert.ok(true, 'routes/player.js should pass jshint.'); 
+  });
+
+});
+define('urban-radio/tests/unit/models/announcement-test', ['ember-qunit'], function (ember_qunit) {
+
+  'use strict';
+
+  ember_qunit.moduleForModel('announcement', 'Unit | Model | announcement', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  ember_qunit.test('it exists', function (assert) {
+    var model = this.subject();
+    // var store = this.store();
+    assert.ok(!!model);
+  });
+
+});
+define('urban-radio/tests/unit/models/announcement-test.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - unit/models');
+  QUnit.test('unit/models/announcement-test.js should pass jshint', function(assert) { 
+    assert.ok(true, 'unit/models/announcement-test.js should pass jshint.'); 
+  });
+
+});
+define('urban-radio/tests/unit/models/calendar-event-test', ['ember-qunit'], function (ember_qunit) {
+
+  'use strict';
+
+  ember_qunit.moduleForModel('calendar-event', 'Unit | Model | calendar event', {
+    // Specify the other units that are required for this test.
+    needs: []
+  });
+
+  ember_qunit.test('it exists', function (assert) {
+    var model = this.subject();
+    // var store = this.store();
+    assert.ok(!!model);
+  });
+
+});
+define('urban-radio/tests/unit/models/calendar-event-test.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - unit/models');
+  QUnit.test('unit/models/calendar-event-test.js should pass jshint', function(assert) { 
+    assert.ok(true, 'unit/models/calendar-event-test.js should pass jshint.'); 
+  });
+
+});
+define('urban-radio/tests/unit/routes/announcement-test', ['ember-qunit'], function (ember_qunit) {
+
+  'use strict';
+
+  ember_qunit.moduleFor('route:announcement', 'Unit | Route | announcement', {
+    // Specify the other units that are required for this test.
+    // needs: ['controller:foo']
+  });
+
+  ember_qunit.test('it exists', function (assert) {
+    var route = this.subject();
+    assert.ok(route);
+  });
+
+});
+define('urban-radio/tests/unit/routes/announcement-test.jshint', function () {
+
+  'use strict';
+
+  QUnit.module('JSHint - unit/routes');
+  QUnit.test('unit/routes/announcement-test.js should pass jshint', function(assert) { 
+    assert.ok(true, 'unit/routes/announcement-test.js should pass jshint.'); 
   });
 
 });
@@ -2416,7 +3078,7 @@ catch(err) {
 if (runningTests) {
   require("urban-radio/tests/test-helper");
 } else {
-  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+e012ce43"});
+  require("urban-radio/app")["default"].create({"name":"urban-radio","version":"0.0.0+7c1211ec"});
 }
 
 /* jshint ignore:end */

@@ -231,11 +231,15 @@ button {
   font-weight: 700;
   color: #fff;
   text-align: center;
-  height: 280px;
   position: relative;
   overflow: hidden;
-  cursor: pointer;
   background: #000; }
+
+.announcment-inner a {
+  display: block;
+  height: 280px;
+  text-decoration: none;
+  color: #fff; }
 
 .ann-fake {
   background: url("my-ideas-fake.png"); }
@@ -304,10 +308,11 @@ button {
   color: #c8c8c8;
   font-size: 30px;
   font-weight: 700;
-  margin-top: 0; }
+  margin-top: 0;
+  line-height: 1.2; }
 
 .schedule-item {
-  overflow: hidden;
+  overflow: visible;
   margin-top: 41px; }
 
 .schedule-timer {

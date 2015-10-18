@@ -23,7 +23,7 @@ export default Ember.Component.extend({
         height: 720,
         playerVars: {
           'autoplay': 1,
-          'controls': 0,
+          'controls': 1,
           'autohide': 1,
           'rel': 0,
           'showinfo': 0,
