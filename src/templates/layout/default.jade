@@ -1,0 +1,25 @@
+doctype html
+html(lang="en")
+  head
+    // build:js /assets/app.js
+    script(src="/../bower_components/mithril/mithril.js")
+    script(src="/../bower_components/pubsub-js/src/pubsub.js")
+      
+    script(src="/../bower_components/lazysizes/plugins/respimg/ls.respimg.js")
+    script(src="/../bower_components/lazysizes/plugins/bgset/ls.bgset.js")
+    script(src="/../bower_components/lazysizes/lazysizes.js")
+
+    script(src="/assets/app.js")    
+    // endbuild    
+    
+    // build:css /assets/app.css
+    link(rel="stylesheet", href="/assets/app.css")
+    // endbuild  
+    
+    
+        
+    
+  body
+    block content
+      
+ 
