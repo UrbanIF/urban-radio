@@ -9,6 +9,13 @@
   padding-bottom: 94px;
 }
 
+@media (max-width: 940px) {
+  .wrap {
+    overflow: hidden;
+    padding-bottom: 131px;
+  }
+}
+
 .additional-players {
   float: right;
   margin: 30px 30px 0 0;
@@ -28,6 +35,12 @@
     background: url('play-winamp.png')
   }
 
+@media (max-width: 940px) {
+  .additional-players {
+    margin: 15px 15px 0 0;
+  }
+}
+
 
 .main-logo {
   width: 246px;
@@ -35,6 +48,11 @@
   background: url('main-logo.png') center center no-repeat;
   text-indent: -99999px;
   margin: 38px auto 83px;
+}
+@media (max-width: 940px) {
+  .main-logo {
+    margin: 70px auto 50px;
+  }
 }
 
 @import 'partials/player';

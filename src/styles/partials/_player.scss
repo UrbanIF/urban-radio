@@ -153,3 +153,13 @@
 .player {
   display: none;
 }
+
+@media (max-width: 450px) {
+  .h-player {
+    margin-left: -20px;
+  }
+  .h-player__desc {
+    margin-left: 180px;
+    width: 180px;
+  }
+}

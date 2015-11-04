@@ -1,32 +1,39 @@
 .main-footer {
-  background-color:  rgba(0, 0, 0, 0.3);
-  height: 94px;
-  padding: 0 30px;
+  background-color:  rgb(20, 25, 40);
+  min-height: 94px;
+  padding: 15px 30px;
   margin-top: -94px;
+  position: relative;
+  z-index: 5;
+  overflow: hidden;
 }
 
 .col_1_of_3 {
   width: 33.33%;
   display: inline-block;
   vertical-align: top;
+  position: relative;
+  float: left;
 }
 
 .main-footer__left {
   font-size: 12px;
   color:  #adadad;
   line-height: 2;
+  left: -33.33%;
 }
   .made_in {
-    margin-top: 25px;
+    margin-top: 10px;
     padding-left: 22px;
     background: url('if-logo.png') left center no-repeat;
   }
-  .copyright {
-  }
+  .copyright {}
 
 
 .main-footer__center {
   text-align: center;
+  margin: 23px 0 15px;
+  left: 33.33%;
 }
   .main-footer__site {
     display: inline-block;
@@ -34,7 +41,7 @@
     font-size: 16px;
     font-weight: 700;
     text-decoration: none;
-    margin: 38px 17px 0;
+    margin: 0 17px;
     line-height: 22px;
     border-bottom: 1px solid white;
     &:hover {
@@ -46,9 +53,29 @@
   text-align: right;
 }
   .webmil {
-    margin-top: 35px;
+    margin-top: 20px;
     display: inline-block;
     width: 39px;
     height: 28px;
     background: url('webmil.png') center center no-repeat;
   }
+
+@media (max-width: 940px) {
+  .main-footer {
+    margin-top: -131px;
+    padding: 15px 15px;
+  }
+  .main-footer__center, .main-footer__left, .main-footer__right {
+    left: 0;
+  }
+  .main-footer__center {
+    width: 100%;
+    margin: 10px 0 10px;
+  }
+  .main-footer__left {
+    width: 85%;
+  }
+  .main-footer__right {
+    width: 15%;
+  }
+}
