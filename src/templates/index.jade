@@ -3,6 +3,17 @@ extends layout/default
 block content
   .wrap
     //- .main-info info
+
+    .additional-players
+      a.ap-tunein.tooltip-left(
+        href="http://tunein.com/radio/Urban-Space-Radio-s246403",
+        data-tooltip="Слухати в TuneIn",
+        target="_blank")
+      a.ap-winamp.tooltip-left(
+        href="http://stream.mjoy.ua:8000/urban-space-radio-aac.m3u",
+        data-tooltip="Слухати в плеєрі",
+        target="_blank")
+    //- .main-info info
     h1.main-logo UrbanSpace Radio
 
     .h-player
@@ -35,6 +46,8 @@ block content
       a.soc-fb(href='https://www.facebook.com/urbanspaceradio')
       a.soc-tw(href='https://twitter.com/UrbanSpaceRadio')
       a.soc-gplus(href='https://plus.google.com/share?url=http://mjoy.ua/radio/urban-space-radio/')
+      a.soc-youtube(href='https://plus.google.com/share?url=http://mjoy.ua/radio/urban-space-radio/')
+      a.soc-4sqr(href='https://plus.google.com/share?url=http://mjoy.ua/radio/urban-space-radio/')
 
   footer.main-footer
     .footer-wrap

@@ -2,7 +2,7 @@ var gulp    = require('gulp');
 var changed = require('gulp-changed');
 
 
-gulp.task('copyCss', function () {
+gulp.task('copyCss', function() {
   var dest = '.tmp/assets';
 
   return gulp.src(['src/styles/**/*.css'])
