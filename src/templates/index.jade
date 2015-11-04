@@ -1,56 +1,53 @@
-doctype html
-html(lang="en")
-  head
-    meta(charset="utf-8")
-    meta(content="width=device-width", name="viewport")
+extends layout/default
 
-    <!--[if lt IE 9]>
-    <script src="http://cdn.polyfill.io/v1/polyfill.min.js?features=Array.prototype.indexOf,Object.keys,Function.prototype.bind,Array.prototype.forEach,JSON"></script>
-    <![endif]-->
+block content
+  .wrap
+    //- .main-info info
+    h1.main-logo UrbanSpace Radio
 
-    script.
-      paceOptions = {
-        catchupTime: 10, ghostTime: 10, minTime: 10, maxProgressPerFrame: 34, elements: false, restartOnPushState: false, restartOnRequestAfter: 100,
-        ajax: { trackMethods: ['GET', 'POST', 'PUT', 'DELETE'], trackWebSockets: false }
-      }
+    .h-player
+      .h-black
 
-    // build:js /assets/app.js
-    script(src="/../src/scripts/lib/block_log.js")
-
-    script(src="/../src/scripts/modernizr.js")
-
-    script(src="/../src/scripts/translate.js")
+      .h-player__btn.state-paying.js-play-btn
+        .p-btn
+          .p-btn__pause-cont
+            .p-btn__pause
+          .p-btn__play
 
 
-    script(src="/../bower_components/PACE/pace.js")
-
-    script(src="/../bower_components/fastclick/lib/fastclick.js")
-
-    script(src="/../bower_components/mithril/mithril.js")
-
-    script(src="/../bower_components/ramda/dist/ramda.js")
-
-    script(src="/../bower_components/store.js/store.js")
-    script(src="/../bower_components/leaflet/dist/leaflet-src.js")
-
-    script(src="/../bower_components/lazysizes/plugins/respimg/ls.respimg.js")
-    script(src="/../bower_components/lazysizes/plugins/bgset/ls.bgset.js")
-    script(src="/../bower_components/lazysizes/lazysizes.js")
+      .h-player__desc
+        .h-player__now-title Зараз в ефірі
+        .h-player__now-singer-and-song
+          span.h-player__now-singer.js-singer
+          span.h-player__now-dash &mdash;
+          span.h-player__now-song.js-song
 
 
-    script(src="/../bower_components/hello/src/hello.polyfill.js")
-    script(src="/../bower_components/hello/src/hello.js")
-    script(src="/../bower_components/hello/src/modules/facebook.js")
-    script(src="/../bower_components/hello/src/modules/twitter.js")
-    script(src="/../bower_components/hello/src/modules/google.js")
-    script(src="/../bower_components/hello/src/modules/vk.js")
+      audio.js-player.player(autoplay)
+        source(src="http://stream.mjoy.ua:8000/urban-space-radio", type='audio/mpeg; codecs="mp3"')
+        source(src="http://stream.mjoy.ua:8000/urban-space-radio-aac", type='audio/mp4: codecs="mp4a.40.5"')
 
-    script(src="/assets/app.js")
-    // endbuild
 
-    link(href="http://fonts.googleapis.com/css?family=Open+Sans:400,300,400italic,600,700,800|PT+Sans:400,700|PT+Serif:400,400italic|PT+Sans+Narrow:400,700&subset=latin,cyrillic", rel="stylesheet")
+    .banner
+      .banner__radio
+      .banner__equalizer
 
-    // build:css /assets/app.css
-    link(rel="stylesheet", href="/assets/app.css")
-    // endbuild
-  body
+    .socials
+      a.soc-fb(href='https://www.facebook.com/urbanspaceradio')
+      a.soc-tw(href='https://twitter.com/UrbanSpaceRadio')
+      a.soc-gplus(href='https://plus.google.com/share?url=http://mjoy.ua/radio/urban-space-radio/')
+
+  footer.main-footer
+    .footer-wrap
+
+      .col_1_of_3.main-footer__left
+        .made_in Made in Ivano-Frankivsk
+        .copyright © 2015 Urban Space Radio. All Rights Reserved
+
+      .col_1_of_3.main-footer__center
+        a.main-footer__site(href='http://warm.if.ua', target='_blank') Warm-city
+        a.main-footer__site(href='http://urbanspace.if.ua', target='_blank') Urban Space 100
+
+      .col_1_of_3.main-footer__right
+        a.webmil(href='http://webmil.eu', target='_blank')
+

@@ -12,9 +12,10 @@ var bundleLogger = require('../util/bundleLogger');
 var gulp         = require('gulp');
 var handleErrors = require('../util/handleErrors');
 var source       = require('vinyl-source-stream');
+var babel = require('babelify');
+
 
 gulp.task('browserify', function() {
-
   var bundler = browserify({
     // Required watchify args
     cache: {}, packageCache: {}, fullPaths: true,
@@ -25,10 +26,9 @@ gulp.task('browserify', function() {
 
     paths: ['./src/scripts/'],
 
-    transform: ['mithrilify'],
     // generate source maps
     debug: global.isWatching
-  });
+  }).transform(babel);
 
   var bundle = function() {
     // Log when bundling starts
@@ -48,7 +48,7 @@ gulp.task('browserify', function() {
       .on('end', bundleLogger.end);
   };
 
-  if(global.isWatching) {
+  if (global.isWatching) {
     bundler = watchify(bundler);
     // Rebundle with watchify on changes.
     bundler.on('update', bundle);

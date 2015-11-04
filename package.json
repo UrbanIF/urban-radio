@@ -20,6 +20,7 @@
     }
   },
   "devDependencies": {
+    "babelify": "^6.3.0",
     "browser-sync": "^2.8.2",
     "browserify": "^11.0.1",
     "browserify-shim": "^3.8.10",

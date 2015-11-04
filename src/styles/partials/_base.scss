@@ -1,31 +1,11 @@
-.main-content { min-height: auto; height: 100%; }
-
-@import 'text-block';
-
-@import 'hover-mask-anim';
-
-@import 'lazyload';
-
-@import 'available-directions';
-
-@import 'bricks';
-
-@import 'trip-item';
-
-@import 'peer-review';
-
-@import 'map';
-
-.btn-container {
-  padding: pem(20) 0;
-  text-align: center;
+body {
+  font-family: "Open Sans", sans-serif;
+  font-size: 14px;
+  letter-spacing: normal;
+  line-height: 1.5em;
+  -webkit-font-smoothing: antialiased;
 }
 
-.btn-container__padding-top { padding-top: pem(35); }
-
-.guide-catalog__section {
-  background: #f1f1f1;
-  text-align: center;
+* {
+  box-sizing: border-box;
 }
-
-.guide-catalog__container { padding-bottom: pem(20); }
