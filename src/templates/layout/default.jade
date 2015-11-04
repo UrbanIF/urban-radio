@@ -1,20 +1,16 @@
 doctype html
 html(lang="en")
   head
-    // build:js /assets/app.js
-    //script(src="/../bower_components/lazysizes/lazysizes.js")
-    script(src="/assets/app.js")
-    // endbuild
-
-    link(href="http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,cyrillic", rel="stylesheet")
-
     // build:css /assets/app.css
     link(rel="stylesheet", href="/../bower_components/normalize-scss/normalize.css")
     link(rel="stylesheet", href="/assets/app.css")
     // endbuild
-
-
   body
     block content
 
+    link(href="http://fonts.googleapis.com/css?family=Open+Sans:400,700&subset=latin,cyrillic", rel="stylesheet")
 
+    // build:js /assets/app.js
+    //script(src="/../bower_components/lazysizes/lazysizes.js")
+    script(src="/assets/app.js")
+    // endbuild

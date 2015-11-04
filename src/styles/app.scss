@@ -175,8 +175,11 @@ html, body {
 
 
   .h-player__desc {
-    margin: 34px 0 0 184px;
+    margin-left: 184px;
     max-width: 250px;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
   }
     .h-player__now-title {
       color:  #2bc5b9;
