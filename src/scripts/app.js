@@ -16,7 +16,7 @@ function addEventListener(el, eventName, handler) {
   if (el.addEventListener) {
     el.addEventListener(eventName, handler);
   } else {
-    el.attachEvent('on' + eventName, function(){
+    el.attachEvent('on' + eventName, function() {
       handler.call(el);
     });
   }
@@ -112,6 +112,7 @@ function initPlayer() {
       removeClass(playBtn, 'state-paying');
     }
   });
+  FastClick.attach(document.body);
 }
 
 dumentReady(initPlayer);
