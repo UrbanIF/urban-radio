@@ -73,6 +73,10 @@ function initPlayer() {
   createJsTag();
   setInterval(createJsTag, 5000);
 
+  if (player.paused) {
+    removeClass(playBtn, 'state-paying');
+  }
+
   addEventListener(playBtn, 'click', function() {
     if (player.paused) {
       player.play();
