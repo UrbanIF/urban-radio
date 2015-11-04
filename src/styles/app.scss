@@ -180,6 +180,7 @@ html, body {
     position: absolute;
     top: 50%;
     transform: translateY(-50%);
+    margin-top: -5px;
   }
     .h-player__now-title {
       color:  #2bc5b9;
@@ -193,13 +194,9 @@ html, body {
     }
       .h-player__now-singer {
         font-size: 20px;
-
-      }
-      .h-player__now-dash {
-        margin: 0 10px;
-        font-size: 20px;
       }
       .h-player__now-song {
+        margin-top: 2px;
         font-size: 16px;
       }
 
