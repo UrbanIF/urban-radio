@@ -1,3 +1,5 @@
+let fun = require('fun');
+
 function dumentReady(fn) {
   if (document.readyState !== 'loading') {
     fn();
@@ -113,6 +115,7 @@ function initPlayer() {
     }
   });
   FastClick.attach(document.body);
+  fun();
 }
 
 dumentReady(initPlayer);
