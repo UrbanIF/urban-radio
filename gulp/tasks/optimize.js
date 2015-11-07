@@ -50,7 +50,7 @@ gulp.task('optimize', function() {
 
     // Update some path. Use that if you want open html pages from dist directory localy without server
     // or comment this 2 lines for using on server
-    .pipe(gulpIf('*.html', gulpReplace('/assets/', 'assets/')))
+    // .pipe(gulpIf('*.html', gulpReplace('/assets/', 'assets/')))
     // .pipe(gulpIf('*.css', gulpReplace('/assets/', 'assets/')))
     // .pipe(gulpIf('*.js', gulpReplace('/assets/', 'assets/')))
 
