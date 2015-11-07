@@ -67,6 +67,7 @@
       transform: translate(-50%, -50%);
     }
     .p-btn__pause-cont {
+      @extend .noselect;
       display: inline-block;
       height: 44px;
       width: 46px;
@@ -94,6 +95,7 @@
         transition: all 250ms cubic-bezier(.12,.91,.67,.89);
       }
     }
+
     .jp-state-playing .p-btn .p-btn__pause {
       width: 16px;
       transform: translateX(-7px);
@@ -103,6 +105,7 @@
       }
     }
     .p-btn__play {
+      @extend .noselect;
       display: inline-block;
       position: relative;
       width: 0;

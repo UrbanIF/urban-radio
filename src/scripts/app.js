@@ -27,32 +27,23 @@ $(document).ready(() => {
 
 
   let stream = {
-    title: 'ABC Jazz',
     mp3: 'http://stream.mjoy.ua:8000/urban-space-radio',
     m4a: 'http://stream.mjoy.ua:8000/urban-space-radio-aac'
   };
   let ready = false;
-  let isMobile = typeof window.orientation !== 'undefined';
 
-  let stopTimer;
+  let isChrome = navigator.userAgent.toLowerCase().indexOf('chrome') > -1;
+  let isMobile = typeof window.orientation !== 'undefined';
+  let isDesctopChrome = isChrome && !isMobile;
+
   $('#jquery_jplayer_1').jPlayer({
     ready() {
       ready = true;
       $(this).jPlayer('setMedia', stream).jPlayer('play');
     },
-    play() {
-      stopTimer && clearTimeout(stopTimer);
-      $(this).jPlayer('play');
-    },
+
     pause() {
-      if (isMobile) {
-        $(this).jPlayer('clearMedia');
-      } else {
-        $(this).jPlayer('pause');
-        stopTimer = setTimeout(() => {
-          $(this).jPlayer('clearMedia');
-        }, 3000);
-      }
+      $(this).jPlayer('clearMedia');
     },
     error(event) {
       if (ready && event.jPlayer.error.type === $.jPlayer.error.URL_NOT_SET) {
@@ -61,8 +52,9 @@ $(document).ready(() => {
       }
     },
     swfPath: 'http://jplayer.org/latest/dist/jplayer',
-    //        if desctop then play m4a and on mobile mp3
-    supplied: isMobile ? 'mp3,m4a' : 'm4a,mp3',
+    // desctop chrome fast start plays m4a, but mp3 need some long preload.
+    // but urban-space-radio-aac stream is not playable on other platforms
+    supplied: isDesctopChrome ? 'm4a,mp3' : 'mp3',
     solution: 'html',
     preload: 'none',
     wmode: 'window',
@@ -72,5 +64,5 @@ $(document).ready(() => {
   });
 
   FastClick.attach(document.body);
-  fun();
+  // fun();
 });
