@@ -94,7 +94,7 @@
         transition: all 250ms cubic-bezier(.12,.91,.67,.89);
       }
     }
-    .state-paying .p-btn .p-btn__pause {
+    .jp-state-playing .p-btn .p-btn__pause {
       width: 16px;
       transform: translateX(-7px);
       &:after {
@@ -115,7 +115,7 @@
       cursor: pointer;
       transition: all 250ms cubic-bezier(.12,.91,.67,.89);
     }
-    .state-paying .p-btn .p-btn__play {
+    .jp-state-playing .p-btn .p-btn__play {
       border-top: 10px solid transparent;
       border-bottom: 10px solid transparent;
       transform: translate(-10px, -12px);
@@ -154,6 +154,14 @@
   display: none;
 }
 
+// .jp-volume-controls {
+//   position: absolute;
+//   right: 0;
+// }
+// .jp-volume-bar-value {
+//   height: 10px;
+//   background: gray;
+// }
 @media (max-width: 450px) {
   .h-player {
     margin-left: -20px;

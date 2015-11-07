@@ -3,6 +3,31 @@ module.exports = function fun() {
   let rows = Array(7).fill(0);
 
   let usr = `
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 ██╗   ██╗██████╗ ██████╗  █████╗ ███╗   ██╗    ███████╗██████╗  █████╗  ██████╗███████╗
 ██║   ██║██╔══██╗██╔══██╗██╔══██╗████╗  ██║    ██╔════╝██╔══██╗██╔══██╗██╔════╝██╔════╝
 ██║   ██║██████╔╝██████╔╝███████║██╔██╗ ██║    ███████╗██████╔╝███████║██║     █████╗
@@ -18,13 +43,13 @@ module.exports = function fun() {
                         ╚═╝  ╚═╝╚═╝  ╚═╝╚═════╝ ╚═╝ ╚═════╝
 `;
   function draw() {
-    console.clear();
-    numbs = numbs.map(_ => (Math.random() * 6 + 1) << 0  );
+    // console.clear();
+    numbs = numbs.map(() => (Math.random() * 6 + 1) << 0  );
     let chart = rows
       .map((row, i) => numbs.map(num => num > i ? ' ' : '$').join(''))
       .join('\n');
-    console.log(usr + chart);
+    console && console.log && console.log(usr + chart);
     setTimeout(draw, 1000);
   }
   draw();
-}
+};
