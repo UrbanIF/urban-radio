@@ -1,0 +1,32 @@
+.partners {
+  text-align: center;
+  position: relative;
+  margin: -80px 0 100px 0;
+}
+
+.partner-warm-city,
+.partner-m-joy,
+.partner-us-100 {
+  width: 200px;
+  height: 60px;
+  display: inline-block;
+}
+
+
+.partner-warm-city {
+  background: url('warm-city.png') center center no-repeat;
+}
+
+.partner-m-joy {
+  background: url('m-joy.png') center center no-repeat;
+}
+
+.partner-us-100 {
+  background: url('us-100.png') center center no-repeat;
+}
+
+@media (max-width: 940px) {
+  .partners {
+    margin: 10px;
+  }
+}
